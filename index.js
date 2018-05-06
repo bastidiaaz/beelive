@@ -1,19 +1,38 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  Navigator,
-  Platform,
+  StatusBar,
   StyleSheet,
-  Text,
   UIManager,
-  View
+  View,
 } from 'react-native';
-import Drawer from './src/components/Drawer/Drawer';
+
+import MainNavigation from './src/components/MainNavigation/MainNavigation';
+
+var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFECB3'
+  },
+  statusBar: {
+    backgroundColor: '#FFA000'
+  }
+});
 
 export default class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {screen: 0}
+  }
   render() {
     return (
-      <Drawer />
+      <View style={styles.container}>
+        <StatusBar
+          backgroundColor="#FFA000"
+          animated={true}
+        />
+        <MainNavigation />
+      </View>
     );
   }
 }
