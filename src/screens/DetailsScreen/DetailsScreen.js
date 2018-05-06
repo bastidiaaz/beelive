@@ -9,13 +9,9 @@ import { Header } from 'react-native-elements';
 export default class DetailsScreen extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <Header
-          leftComponent={{ icon: 'menu', color: '#fff' }}
-          centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-          rightComponent={{ icon: 'home', color: '#fff' }}
-        />
-        <Text>Details Screen</Text>
+      <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={{ fontSize: 24, paddingHorizontal: 3 }}>HOLA AMIGOS</Text>
+        <Text style={{ fontSize: 24, paddingHorizontal: 3 }}>ESTE ES UN REPORTE</Text>
       </View>
     );
   }
