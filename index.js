@@ -3,6 +3,7 @@ import {
   AppRegistry,
   StatusBar,
   StyleSheet,
+  Text,
   UIManager,
   View,
 } from 'react-native';
@@ -12,10 +13,17 @@ import MainNavigation from './src/components/MainNavigation/MainNavigation';
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFECB3'
+    backgroundColor: '#FFF'
   },
-  statusBar: {
-    backgroundColor: '#FFA000'
+  header: {
+    backgroundColor: '#FFA000',
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 16
   }
 });
 
@@ -28,9 +36,12 @@ export default class Main extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar
-          backgroundColor="#FFA000"
+          backgroundColor="#FF5722"
           animated={true}
         />
+        <View style={styles.header}>
+          <Text style={styles.title}>COLMENAS</Text>
+        </View>
         <MainNavigation />
       </View>
     );
