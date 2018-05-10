@@ -13,11 +13,11 @@ import DetailsScreen from '../../screens/DetailsScreen/DetailsScreen';
 
 var styles = StyleSheet.create({
   icon: {
-    fontSize: 24,
-    color: 'white'
+    fontSize: 22,
+    color: '#FFF'
   },
   tab: {
-    backgroundColor: '#FFA000',
+    backgroundColor: '#FFC107',
     borderTopColor: '#FFECB3',
     borderTopWidth: 1
   },
