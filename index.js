@@ -16,14 +16,15 @@ var styles = StyleSheet.create({
     backgroundColor: '#FFF'
   },
   header: {
-    backgroundColor: '#FFA000',
+    backgroundColor: '#FFC107',
     height: 50,
     alignItems: 'center',
     justifyContent: 'center'
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 16
+    fontSize: 16,
+    color: '#FFF'
   }
 });
 
@@ -36,7 +37,7 @@ export default class Main extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar
-          backgroundColor="#FF5722"
+          backgroundColor="#FFA000"
           animated={true}
         />
         <View style={styles.header}>
