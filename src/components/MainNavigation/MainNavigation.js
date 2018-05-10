@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import HivesScreen from '../../screens/HivesScreen/HivesScreen';
 import SplashScreen from '../../screens/SplashScreen/SplashScreen';
 import LoginScreen from '../../screens/LoginScreen/LoginScreen';
 import DetailsScreen from '../../screens/DetailsScreen/DetailsScreen';
@@ -27,10 +28,10 @@ var styles = StyleSheet.create({
 })
 
 var routes = {
-  Splash: {
-    screen: SplashScreen,
+  Hives: {
+    screen: HivesScreen,
     navigationOptions: ({ navigation }) => ({
-      tabBarIcon: () => <Icon name="home" style={styles.icon}/>
+      tabBarIcon: () => <Icon name="cubes" style={styles.icon}/>
     })
   },
   Login: {
