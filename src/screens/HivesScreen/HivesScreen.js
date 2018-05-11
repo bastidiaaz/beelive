@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  FlatList,
   Text,
   StyleSheet,
   ScrollView,
@@ -7,13 +8,13 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+
+import List from '../../components/List/List';
 import FabButton from '../../components/FabButton/FabButton';
 
 var styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFF',
-    padding: 25,
     flex: 1
   },
   title: {
@@ -31,42 +32,42 @@ var styles = StyleSheet.create({
   itemIcon: {
     fontSize: 20,
     marginRight: 40
-  },
-  primaryText: {
-    color: '#212121'
-  },
-  secondaryText: {
-    color: '#757575'
   }
 });
 
 class HivesScreen extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [{
+        key: '0',
+        name: 'Colmena 1',
+        status: 'Saludable',
+        population: '~100'
+      }, {
+        key: '1',
+        name: 'Colmena 2',
+        status: 'Critico',
+        population: '~80'
+      }, {
+        key: '2',
+        name: 'Colmena 3',
+        status: 'Saludable',
+        population: '~120'
+      } , {
+        key: '3',
+        name: 'Colmena 3',
+        status: 'Saludable',
+        population: '~120'
+      }]
+    };
+  }
+
   render() {
     return(
       <View style={styles.container}>
-        <ScrollView>
-          <TouchableOpacity style={styles.listItem}>
-            <Icon style={styles.itemIcon} name="cube"/>
-            <View>
-              <Text style={styles.primaryText}>{'Colmena 1'.toUpperCase()}</Text>
-              <Text style={styles.secondaryText}>Estado: Saludable, Población: ~100</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.listItem}>
-            <Icon style={styles.itemIcon} name="cube"/>
-            <View>
-              <Text style={styles.primaryText}>{'Colmena 2'.toUpperCase()}</Text>
-              <Text style={styles.secondaryText}>Estado: Crítico, Población: ~130</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.listItem}>
-            <Icon style={styles.itemIcon} name="cube"/>
-            <View>
-              <Text style={styles.primaryText}>{'Colmena 3'.toUpperCase()}</Text>
-              <Text style={styles.secondaryText}>Estado: Saludable, Población: ~50</Text>
-            </View>
-          </TouchableOpacity>
-        </ScrollView>
+        <List data={this.state.data} />
         <FabButton />
       </View>
     )
