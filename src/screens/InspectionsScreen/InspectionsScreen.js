@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import SortBy from '../../components/SortBy/SortBy';
+import SortedList from '../../components/SortedList/SortedList';
 
 class InspectionsScreen extends React.Component {
   constructor(props) {
@@ -21,6 +22,20 @@ class InspectionsScreen extends React.Component {
           label: 'Estado',
           key: 'status'
         }
+      ],
+      sections: [
+        {
+          title: 'Enero',
+          data: ['Reporte a Colmena 1', 'Reporte a Colmena 2']
+        },
+        {
+          title: 'Febrero',
+          data: ['Reporte a Colmena 3', 'Reporte a Colmena 1']
+        },
+        {
+          title: 'Marzo',
+          data: ['Reporte a Colmena 1', 'Reporte a Colmena 2']
+        }
       ]
     }
   }
@@ -38,6 +53,7 @@ class InspectionsScreen extends React.Component {
           placeholder="Búsqueda"
         />
         <SortBy label="Ordenar por:" badges={this.state.badges}/>
+        <SortedList sections={this.state.sections}/>
       </View>
     )
   }
