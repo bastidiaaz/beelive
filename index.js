@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   AppRegistry,
   StatusBar,
@@ -9,6 +9,24 @@ import {
 } from 'react-native';
 
 import MainNavigation from './src/components/MainNavigation/MainNavigation';
+
+class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {screen: 0}
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <StatusBar backgroundColor="#FFA000" animated={true} />
+        <View style={styles.header}>
+          <Text style={styles.title}>COLMENAS</Text>
+        </View>
+        <MainNavigation />
+      </View>
+    );
+  }
+}
 
 var styles = StyleSheet.create({
   container: {
@@ -28,26 +46,7 @@ var styles = StyleSheet.create({
   }
 });
 
-export default class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {screen: 0}
-  }
-  render() {
-    return (
-      <View style={styles.container}>
-        <StatusBar
-          backgroundColor="#FFA000"
-          animated={true}
-        />
-        <View style={styles.header}>
-          <Text style={styles.title}>COLMENAS</Text>
-        </View>
-        <MainNavigation />
-      </View>
-    );
-  }
-}
+export default Main;
 
 AppRegistry.registerComponent('beelive', () => Main);
 

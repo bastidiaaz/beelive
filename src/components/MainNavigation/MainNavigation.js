@@ -6,10 +6,32 @@ import {
 } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+//Import Screens
 import HivesScreen from '../../screens/HivesScreen/HivesScreen';
-import SplashScreen from '../../screens/SplashScreen/SplashScreen';
 import SummaryScreen from '../../screens/SummaryScreen/SummaryScreen';
 import DetailsScreen from '../../screens/DetailsScreen/DetailsScreen';
+
+var routes = {
+  SummaryScreen: {
+    screen: SummaryScreen,
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: () => <Icon name="home" style={styles.icon}/>
+    })
+  },
+  Hives: {
+    screen: HivesScreen,
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: () => <Icon name="forumbee" style={styles.icon}/>
+    })
+  },
+  Details: {
+    screen: DetailsScreen,
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: () => <Icon name="bar-chart" style={styles.icon}/>
+    })
+  }
+}
 
 var styles = StyleSheet.create({
   icon: {
@@ -25,28 +47,7 @@ var styles = StyleSheet.create({
     backgroundColor: '#FF5722',
     height: 5
   }
-})
-
-var routes = {
-  Hives: {
-    screen: HivesScreen,
-    navigationOptions: ({ navigation }) => ({
-      tabBarIcon: () => <Icon name="forumbee" style={styles.icon}/>
-    })
-  },
-  Login: {
-    screen: SummaryScreen,
-    navigationOptions: ({ navigation }) => ({
-      tabBarIcon: () => <Icon name="wpforms" style={styles.icon}/>
-    })
-  },
-  Details: {
-    screen: DetailsScreen,
-    navigationOptions: ({ navigation }) => ({
-      tabBarIcon: () => <Icon name="bar-chart" style={styles.icon}/>
-    })
-  }
-}
+});
 
 var options = {
   tabBarPosition: 'bottom',
