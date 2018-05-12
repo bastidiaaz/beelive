@@ -8,7 +8,7 @@ import { TabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import HivesScreen from '../../screens/HivesScreen/HivesScreen';
 import SplashScreen from '../../screens/SplashScreen/SplashScreen';
-import LoginScreen from '../../screens/LoginScreen/LoginScreen';
+import SummaryScreen from '../../screens/SummaryScreen/SummaryScreen';
 import DetailsScreen from '../../screens/DetailsScreen/DetailsScreen';
 
 var styles = StyleSheet.create({
@@ -31,13 +31,13 @@ var routes = {
   Hives: {
     screen: HivesScreen,
     navigationOptions: ({ navigation }) => ({
-      tabBarIcon: () => <Icon name="cubes" style={styles.icon}/>
+      tabBarIcon: () => <Icon name="forumbee" style={styles.icon}/>
     })
   },
   Login: {
-    screen: LoginScreen,
+    screen: SummaryScreen,
     navigationOptions: ({ navigation }) => ({
-      tabBarIcon: () => <Icon name="microphone" style={styles.icon}/>
+      tabBarIcon: () => <Icon name="wpforms" style={styles.icon}/>
     })
   },
   Details: {
