@@ -2,13 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import InfoComponent from '../../components/InfoComponent/InfoComponent';
 
-var styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#FFF',
-    flex: 1,
-    padding: 15
-  }
-});
 class SummaryScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -38,14 +31,30 @@ class SummaryScreen extends React.Component {
   render() {
     return(
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 10}}>
-          <Text style={{fontSize: 25}}>Total de colmenas: </Text>
-          <Text style={{fontWeight: 'bold', fontSize: 25}}>6</Text>
+        <View style={styles.titleWrapper}>
+          <Text style={styles.title}>Total de colmenas: </Text>
+          <Text style={[styles.title, {fontWeight: 'bold'}]}>6</Text>
         </View>
         <InfoComponent />
       </View>
     )
   }
 }
+
+var styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FFF',
+    flex: 1,
+    padding: 15
+  },
+  titleWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 15
+  },
+  title: {
+    fontSize: 20
+  }
+});
 
 export default SummaryScreen;
