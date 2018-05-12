@@ -9,28 +9,28 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 //Import Screens
 import HivesScreen from '../../screens/HivesScreen/HivesScreen';
+import InspectionsScreen from '../../screens/InspectionsScreen/InspectionsScreen';
 import SummaryScreen from '../../screens/SummaryScreen/SummaryScreen';
-import DetailsScreen from '../../screens/DetailsScreen/DetailsScreen';
 
 var routes = {
-  SummaryScreen: {
-    screen: SummaryScreen,
-    navigationOptions: ({ navigation }) => ({
-      tabBarIcon: () => <Icon name="home" style={styles.icon}/>
-    })
-  },
   Hives: {
     screen: HivesScreen,
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: () => <Icon name="forumbee" style={styles.icon}/>
     })
   },
-  Details: {
-    screen: DetailsScreen,
+  Inspections: {
+    screen: InspectionsScreen,
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: () => <Icon name="bar-chart" style={styles.icon}/>
     })
-  }
+  },
+  Summary: {
+    screen: SummaryScreen,
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: () => <Icon name="home" style={styles.icon}/>
+    })
+  },
 }
 
 var styles = StyleSheet.create({
