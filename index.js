@@ -13,7 +13,7 @@ import { createStore, applyMiddleware } from 'redux';
 
 import AppReducer from './src/config/reducer';
 import { middleware } from './src/utils/redux';
-import AppWithNavigationState from './src/components/AppNavigator/AppNavigatorConnect';
+import AppWithNavigationState from './src/components/AppNavigator/AppNavigator';
 
 const store = createStore(AppReducer, applyMiddleware(logger, middleware));
 
