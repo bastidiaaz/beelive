@@ -5,6 +5,7 @@ import { StyleSheet } from 'react-native';
 import HivesScreen from '../screens/HivesScreen/HivesScreen';
 import InspectionsScreen from '../screens/InspectionsScreen/InspectionsScreen';
 import SummaryScreen from '../screens/SummaryScreen/SummaryScreen';
+import LoginScreen from '../screens/LoginScreen/LoginScreen';
 
 var styles = StyleSheet.create({
   icon: {
@@ -28,6 +29,12 @@ var routes = {
   },
   Resumen: {
     screen: SummaryScreen,
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: () => <Icon name="home" style={styles.icon}/>
+    })
+  },
+  Login: {
+    screen: LoginScreen,
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: () => <Icon name="home" style={styles.icon}/>
     })
