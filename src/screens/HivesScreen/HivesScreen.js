@@ -62,6 +62,8 @@ class HivesScreen extends React.Component {
         population: '~120'
       }]
     };
+
+    console.log(this.props);
   }
 
   render() {

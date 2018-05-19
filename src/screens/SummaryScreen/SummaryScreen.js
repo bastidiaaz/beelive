@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
+
+import styles from './styles';
 import InfoComponent from '../../components/InfoComponent/InfoComponent';
 
 class SummaryScreen extends React.Component {
@@ -40,21 +42,5 @@ class SummaryScreen extends React.Component {
     )
   }
 }
-
-var styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#FFF',
-    flex: 1,
-    padding: 15
-  },
-  titleWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginBottom: 15
-  },
-  title: {
-    fontSize: 20
-  }
-});
 
 export default SummaryScreen;

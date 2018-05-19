@@ -7,6 +7,8 @@ import {
   StyleSheet
 } from 'react-native';
 
+import styles from './styles';
+
 export default class Form extends React.Component {
   render() {
     return (
@@ -19,7 +21,7 @@ export default class Form extends React.Component {
           underlineColorAndroid="#FFA000"
           style={styles.input}
         >
-
+          
         </TextInput>
         <Text style={styles.label}>Contraseña</Text>
         <TextInput
@@ -39,40 +41,3 @@ export default class Form extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 20
-  },
-  title: {
-    color: '#FFF',
-    fontSize: 20
-  },
-  titleWrapper: {
-    alignItems: 'center',
-    marginBottom: 30,
-  },
-  label: {
-    color: '#FFECB3',
-    marginBottom: 10
-  },
-  input: {
-    color: '#FFF',
-    marginBottom: 20,
-    borderWidth: 0
-  },
-  button: {
-    backgroundColor: "#448AFF",
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#212121',
-    shadowRadius: 25,
-    shadowOffset: {height: 3, width: 3}
-  },
-  buttonText: {
-    color: '#FFF',
-    fontSize: 15,
-    fontWeight: 'bold'
-  }
-});

@@ -4,9 +4,11 @@ import {
   Text,
   StyleSheet
 } from 'react-native';
+
+import styles from './styles';
 import Form from '../../components/Form/Form';
 
-export default class LoginScreen extends React.Component {
+class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -19,21 +21,4 @@ export default class LoginScreen extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFC107',
-  },
-  welcomeTitleWrapper: {
-    flex: 0.9,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  title: {
-    color: 'white',
-    fontSize: 30,
-  },
-  subtitle: {
-    color: '#FFECB3',
-  }
-})
+export default LoginScreen;

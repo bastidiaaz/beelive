@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import { SearchBar } from 'react-native-elements';
+
+import styles from './styles';
 import SortBy from '../../components/SortBy/SortBy';
 import SortedList from '../../components/SortedList/SortedList';
 
@@ -59,17 +61,4 @@ class InspectionsScreen extends React.Component {
   }
 }
 
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  searchContainer: {
-    backgroundColor: '#FFC107',
-    borderBottomColor: 'transparent',
-    borderTopColor: 'transparent'
-  },
-  input: {
-    backgroundColor: '#FFECB3'
-  }
-})
 export default InspectionsScreen;

@@ -2,18 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import IconBadge from '../IconBadge/IconBadge';
 
-
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 40
-  },
-  infoElement: {
-    alignItems: 'center'
-  }
-});
+import styles from './styles';
 
 class InfoComponent extends React.Component {
   constructor(props) {

@@ -5,7 +5,9 @@ import {
   StyleSheet
 } from 'react-native';
 
-export default class SplashScreen extends React.Component {
+import styles from './styles';
+
+class SplashScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -20,29 +22,4 @@ export default class SplashScreen extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FFC107'
-  },
-  title: {
-    color: 'white',
-    fontSize: 42,
-    fontWeight: 'bold',
-    textShadowColor: '#FFA000',
-    textShadowOffset:{width: 3, height: 3},
-    textShadowRadius: 25,
-  },
-  titleWrapper: {
-    flex: 1,
-    justifyContent: 'center'
-  },
-  subtitle: {
-    color: 'white'
-  },
-  subtitleWrapper: {
-    paddingBottom: 20
-  }
-});
+export default SplashScreen;

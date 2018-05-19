@@ -1,6 +1,7 @@
 import React from 'react';
 import { SectionList, StyleSheet, Text } from 'react-native';
 import { ListItem } from 'react-native-elements';
+import styles from './styles';
 
 class SortedList extends React.Component {
   constructor(props) {
@@ -27,20 +28,10 @@ class SortedList extends React.Component {
         renderSectionHeader={this._renderSectionHeader}
         sections={this.props.sections}
         keyExtractor={(item, index) => item + index}
-        style={{padding: 15}}
+        style={styles.container}
       />
     )
   }
 }
-
-var styles = StyleSheet.create({
-  sectionHeader: {
-    fontSize: 20,
-    fontWeight: 'bold'
-  },
-  listItem: {
-    borderBottomWidth: 0
-  }
-});
 
 export default SortedList;

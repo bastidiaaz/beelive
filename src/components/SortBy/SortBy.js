@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import { Badge } from 'react-native-elements';
 
+import styles from './styles';
+
 class SortBy extends React.Component {
   render() {
     return(
@@ -23,29 +25,5 @@ class SortBy extends React.Component {
     )
   }
 }
-
-var styles = StyleSheet.create({
-  container: {
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    flexDirection: 'row',
-    backgroundColor: '#FFC107',
-    alignItems: 'center'
-  },
-  label: {
-    color: '#FFF',
-    fontSize: 15
-  },
-  badgeWrapper: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  badgeContainer: {
-    backgroundColor: '#FF5722',
-    marginRight: 10
-  }
-});
 
 export default SortBy;

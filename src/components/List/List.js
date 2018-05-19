@@ -3,21 +3,7 @@ import { FlatList, StyleSheet, View } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-var styles = StyleSheet.create({
-  iconContainer: {
-    height: 40,
-    width: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 15,
-    backgroundColor: 'black',
-    borderRadius: 30
-  },
-  icon: {
-    fontSize: 22,
-    color: '#FFC107'
-  }
-});
+import styles from './styles';
 
 class List extends React.Component {
   constructor(props) {
