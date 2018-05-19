@@ -7,22 +7,20 @@ import {
   UIManager,
   View
 } from 'react-native';
-import { TabNavigator } from 'react-navigation';
-import routes from './src/config/routes';
+import logger from 'redux-logger';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+
+import AppReducer from './src/config/reducer';
+import { middleware } from './src/utils/redux';
+import AppWithNavigationState from './src/components/AppNavigator/AppNavigatorConnect';
+
+const store = createStore(AppReducer, applyMiddleware(logger, middleware));
 
 var styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFF'
-  },
-  tab: {
-    backgroundColor: '#FFC107',
-    borderTopColor: '#FFECB3',
-    borderTopWidth: 1
-  },
-  tabIndicator: {
-    backgroundColor: '#FF5722',
-    height: 5
   },
   header: {
     backgroundColor: '#FFC107',
@@ -37,44 +35,24 @@ var styles = StyleSheet.create({
   }
 });
 
-var options = {
-  tabBarPosition: 'bottom',
-  animationEnabled: true,
-  swipeEnabled: true,
-  lazy: false,
-  tabBarOptions: {
-    showIcon: true,
-    showLabel: false,
-    style: styles.tab,
-    indicatorStyle: styles.tabIndicator
-  }
-};
-
-var TabNav = TabNavigator(routes, options);
-
 class Main extends React.Component {
-  constructor(props) {
-    super(props);
-
-    console.log(this.props);
-  }
-
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar backgroundColor="#FFA000" animated={true} />
-        <View style={styles.header}>
-          <Text style={styles.title}>COLMENAS</Text>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <StatusBar backgroundColor="#FFA000" animated={true} />
+          <View style={styles.header}>
+            <Text style={styles.title}>COLMENAS</Text>
+          </View>
+          <AppWithNavigationState />
         </View>
-        <TabNav />
-      </View>
+      </Provider>
     );
   }
 }
 
-export default Main;
-
 AppRegistry.registerComponent('beelive', () => Main);
 
+export default Main;
 //Activate animations
 // UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
