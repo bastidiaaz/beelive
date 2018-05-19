@@ -14,19 +14,19 @@ var styles = StyleSheet.create({
 });
 
 var routes = {
-  Hives: {
+  Colmenas: {
     screen: HivesScreen,
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: () => <Icon name="forumbee" style={styles.icon}/>
     })
   },
-  Inspections: {
+  Inspecciones: {
     screen: InspectionsScreen,
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: () => <Icon name="bar-chart" style={styles.icon}/>
     })
   },
-  Summary: {
+  Resumen: {
     screen: SummaryScreen,
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: () => <Icon name="home" style={styles.icon}/>
