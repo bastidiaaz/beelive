@@ -8,7 +8,7 @@ import {
   View
 } from 'react-native';
 import { TabNavigator } from 'react-navigation';
-import routes from './src/screens/routes';
+import routes from './src/config/routes';
 
 var styles = StyleSheet.create({
   container: {
