@@ -9,33 +9,15 @@ import {
   View
 } from 'react-native';
 
+import styles from './styles';
 import List from '../../components/List/List';
 import FabButton from '../../components/FabButton/FabButton';
 
-var styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#FFF',
-    flex: 1
-  },
-  title: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  listItem: {
-    height: 50,
-    marginBottom: 15,
-    alignItems: 'center',
-    flexDirection: 'row'
-  },
-  itemIcon: {
-    fontSize: 20,
-    marginRight: 40
-  }
-});
-
 class HivesScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Colmenas'
+  };
+
   constructor(props) {
     super(props);
 
@@ -62,8 +44,6 @@ class HivesScreen extends React.Component {
         population: '~120'
       }]
     };
-
-    console.log(this.props);
   }
 
   render() {
