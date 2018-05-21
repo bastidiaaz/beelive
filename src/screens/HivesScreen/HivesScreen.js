@@ -22,34 +22,20 @@ class HivesScreen extends React.Component {
     super(props);
 
     this.state = {
-      data: [{
-        key: '0',
-        name: 'Colmena 1',
-        status: 'Saludable',
-        population: '~100'
-      }, {
-        key: '1',
-        name: 'Colmena 2',
-        status: 'Critico',
-        population: '~80'
-      }, {
-        key: '2',
-        name: 'Colmena 3',
-        status: 'Saludable',
-        population: '~120'
-      } , {
-        key: '3',
-        name: 'Colmena 3',
-        status: 'Saludable',
-        population: '~120'
-      }]
+      hives: []
     };
+  }
+
+  UNSAFE_componentWillMount(){
+    fetch('http://192.168.1.130:3000/hives')
+    .then(response => response.json())
+    .then(data => this.setState({ hives: data }));
   }
 
   render() {
     return(
       <View style={styles.container}>
-        <List data={this.state.data} />
+        <List data={this.state.hives} />
         <FabButton />
       </View>
     )
