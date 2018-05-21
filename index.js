@@ -7,15 +7,14 @@ import {
   UIManager,
   View
 } from 'react-native';
-import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
 import appReducer from './src/reducers/appReducer';
-import { middleware } from './src/utils/redux';
+import { middlewares } from './src/utils/redux';
 import AppWithNavigationState from './src/components/AppNavigator/AppNavigator';
 
-const store = createStore(appReducer, applyMiddleware(logger, middleware));
+const store = createStore(appReducer, applyMiddleware(...middlewares));
 
 var styles = StyleSheet.create({
   container: {
@@ -42,7 +41,7 @@ class Main extends React.Component {
         <View style={styles.container}>
           <StatusBar backgroundColor="#FFA000" animated={true} />
           <View style={styles.header}>
-            <Text style={styles.title}>COLMENAS</Text>
+            <Text style={styles.title}>Beelive</Text>
           </View>
           <AppWithNavigationState />
         </View>
