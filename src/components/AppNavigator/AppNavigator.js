@@ -46,7 +46,7 @@ class AppWithNavigationState extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  nav: state.nav,
+  nav: state.navigationReducer,
 });
 
 export default connect(mapStateToProps)(AppWithNavigationState);

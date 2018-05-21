@@ -11,11 +11,11 @@ import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
-import AppReducer from './src/config/reducer';
+import appReducer from './src/reducers/appReducer';
 import { middleware } from './src/utils/redux';
 import AppWithNavigationState from './src/components/AppNavigator/AppNavigator';
 
-const store = createStore(AppReducer, applyMiddleware(logger, middleware));
+const store = createStore(appReducer, applyMiddleware(logger, middleware));
 
 var styles = StyleSheet.create({
   container: {
