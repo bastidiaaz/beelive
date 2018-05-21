@@ -1,45 +1,35 @@
 import React from 'react';
-import {
-  FlatList,
-  Text,
-  StyleSheet,
-  ScrollView,
-  ToolbarAndroid,
-  TouchableOpacity,
-  View
-} from 'react-native';
+import PropTypes from 'prop-types';
+import { View } from 'react-native';
+import { connect } from 'react-redux';
 
+import { fetchHives } from '../../reducers/hivesReducer/hivesActions';
 import styles from './styles';
 import List from '../../components/List/List';
 import FabButton from '../../components/FabButton/FabButton';
 
 class HivesScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Colmenas'
+  static propTypes = {
+    fetchHives: PropTypes.func.isRequired,
+    data: PropTypes.array.isRequired
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      hives: []
-    };
-  }
-
   UNSAFE_componentWillMount(){
-    fetch('http://192.168.1.130:3000/hives')
-    .then(response => response.json())
-    .then(data => this.setState({ hives: data }));
+    this.props.fetchHives();
   }
 
   render() {
     return(
       <View style={styles.container}>
-        <List data={this.state.hives} />
+        <List data={this.props.data} />
         <FabButton />
       </View>
     )
   }
 }
 
-export default HivesScreen;
+const mapStateToProps = state => ({
+  data: state.hives.data
+});
+
+export default connect(mapStateToProps, { fetchHives })(HivesScreen);
