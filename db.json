@@ -1,0 +1,25 @@
+{
+  "hives": [
+    {
+      "key": "0",
+      "name": "Colmena 1",
+      "status": "Saludable",
+      "population": "~100"
+    }, {
+      "key": "1",
+      "name": "Colmena 2",
+      "status": "Critico",
+      "population": "~80"
+    }, {
+      "key": "2",
+      "name": "Colmena 3",
+      "status": "Saludable",
+      "population": "~120"
+    }, {
+      "key": "3",
+      "name": "Colmena 3",
+      "status": "Saludable",
+      "population": "~120"
+    }
+  ]
+}
