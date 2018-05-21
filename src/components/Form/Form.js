@@ -21,7 +21,7 @@ export default class Form extends React.Component {
           underlineColorAndroid="#FFA000"
           style={styles.input}
         >
-          
+
         </TextInput>
         <Text style={styles.label}>Contraseña</Text>
         <TextInput
@@ -33,7 +33,6 @@ export default class Form extends React.Component {
         </TextInput>
         <TouchableOpacity
           style={styles.button}
-          onPress={console.log('holas')}
         >
           <Text style={styles.buttonText}>INICIAR SESIÓN</Text>
         </TouchableOpacity>
