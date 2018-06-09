@@ -1,12 +1,12 @@
 import { NavigationActions } from 'react-navigation';
-import { TabNavElement } from '../../components/TabNavElement/TabNavElement';
+import { StackNavElement } from '../../components/StackNav/StackNav';
 
-const initialNavState = TabNavElement.router.getStateForAction(NavigationActions.init(), null);
+const initialNavState = StackNavElement.router.getStateForAction(NavigationActions.init(), null);
 
 function navigationReducer(state = initialNavState, action) {
   switch (action.type) {
     default:
-      return TabNavElement.router.getStateForAction(action, state) || state;
+      return StackNavElement.router.getStateForAction(action, state) || state;
   }
 }
 

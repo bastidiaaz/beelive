@@ -9,7 +9,7 @@ import { createStore, applyMiddleware } from 'redux';
 
 import appReducer from './src/reducers/appReducer';
 import { middlewares } from './src/utils/redux';
-import TabNav from './src/components/TabNavElement/TabNavElement';
+import StackNav from './src/components/StackNav/StackNav';
 
 const store = createStore(appReducer, applyMiddleware(...middlewares));
 
@@ -17,7 +17,7 @@ class Main extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <TabNav />
+        <StackNav />
       </Provider>
     );
   }
