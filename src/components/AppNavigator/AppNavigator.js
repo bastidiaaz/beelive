@@ -1,4 +1,9 @@
 import React from 'react';
+import {
+  StatusBar,
+  Text,
+  View
+} from 'react-native';
 import PropTypes from 'prop-types';
 import { TabNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -31,16 +36,28 @@ class AppWithNavigationState extends React.Component {
     nav: PropTypes.object.isRequired,
   };
 
+  _getScreenName = () => {
+    var index = this.props.nav.index;
+    var route = this.props.nav.routes[index];
+    return route.routeName;
+  }
+
   render() {
     const { dispatch, nav } = this.props;
+    console.log(this.props);
     return (
-      <AppNavigator
-        navigation={addNavigationHelpers({
-          dispatch,
-          state: nav,
-          addListener,
-        })}
-      />
+      <View style={styles.container}>
+        <StatusBar backgroundColor="#FFA000" animated={true} />
+        <View style={styles.header}>
+          <Text style={styles.title}>{this._getScreenName()}</Text>
+        </View>
+        <AppNavigator
+          navigation={addNavigationHelpers({
+            dispatch,
+            state: nav,
+            addListener,
+          })}/>
+      </View>
     );
   }
 }
