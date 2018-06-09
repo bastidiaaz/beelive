@@ -27,10 +27,10 @@ var options = {
   }
 };
 
-export const AppNavigator = TabNavigator(routes, options);
+export const TabNavElement = TabNavigator(routes, options);
 
 
-class AppWithNavigationState extends React.Component {
+class TabNav extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     nav: PropTypes.object.isRequired,
@@ -51,7 +51,7 @@ class AppWithNavigationState extends React.Component {
         <View style={styles.header}>
           <Text style={styles.title}>{this._getScreenName()}</Text>
         </View>
-        <AppNavigator
+        <TabNavElement
           navigation={addNavigationHelpers({
             dispatch,
             state: nav,
@@ -66,4 +66,4 @@ const mapStateToProps = state => ({
   nav: state.nav
 });
 
-export default connect(mapStateToProps)(AppWithNavigationState);
+export default connect(mapStateToProps)(TabNav);

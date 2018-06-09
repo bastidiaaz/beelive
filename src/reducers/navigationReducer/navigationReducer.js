@@ -1,12 +1,12 @@
 import { NavigationActions } from 'react-navigation';
-import { AppNavigator } from '../../components/AppNavigator/AppNavigator';
+import { TabNavElement } from '../../components/TabNavElement/TabNavElement';
 
-const initialNavState = AppNavigator.router.getStateForAction(NavigationActions.init(), null);
+const initialNavState = TabNavElement.router.getStateForAction(NavigationActions.init(), null);
 
 function navigationReducer(state = initialNavState, action) {
   switch (action.type) {
     default:
-      return AppNavigator.router.getStateForAction(action, state) || state;
+      return TabNavElement.router.getStateForAction(action, state) || state;
   }
 }
 
