@@ -1,4 +1,5 @@
 import React from 'react';
+import { YellowBox } from 'react-native';
 import {
   AppRegistry,
   StatusBar,
@@ -26,5 +27,14 @@ class Main extends React.Component {
 AppRegistry.registerComponent('beelive', () => Main);
 
 export default Main;
+
+
+//Ignore listed warnings 
+YellowBox.ignoreWarnings([
+  'Warning: isMounted(...) is deprecated',
+  'Remote debugger is in a background tab which may cause apps to perform slowly',
+  'Module RCTImageLoader'
+]);
+
 //Activate animations
 // UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
