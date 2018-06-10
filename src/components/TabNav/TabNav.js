@@ -5,7 +5,7 @@ import styles from './styles';
 import { tabRoutes } from '../../config/routes';
 
 var options = {
-  initialRouteName: 'Colmenas',
+  initialRouteName: 'Apiaries',
   tabBarPosition: 'bottom',
   animationEnabled: true,
   swipeEnabled: true,

@@ -28,15 +28,15 @@ class InspectionsScreen extends React.Component {
       sections: [
         {
           title: 'Enero',
-          data: ['Reporte a Colmena 1', 'Reporte a Colmena 2']
+          data: ['Reporte a Apiario 1', 'Reporte a Apiario 2']
         },
         {
           title: 'Febrero',
-          data: ['Reporte a Colmena 3', 'Reporte a Colmena 1']
+          data: ['Reporte a Apiario 3', 'Reporte a Apiario 1']
         },
         {
           title: 'Marzo',
-          data: ['Reporte a Colmena 1', 'Reporte a Colmena 2']
+          data: ['Reporte a Apiario 1', 'Reporte a Apiario 2']
         }
       ]
     }

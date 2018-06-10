@@ -9,19 +9,19 @@ class SummaryScreen extends React.Component {
     super(props);
 
     this.state = {
-      inactiveHives: [
+      inactiveApiaries: [
         {
           key: '1',
-          name: 'Colmena 2',
+          name: 'Apiario 2',
           status: 'Critico',
           population: '~80',
           inactiveDays: '2'
         }
       ],
-      criticalHives: [
+      criticalApiaries: [
         {
           key: '1',
-          name: 'Colmena 2',
+          name: 'Apiario 2',
           status: 'Critico',
           population: '~80'
         }
@@ -34,7 +34,7 @@ class SummaryScreen extends React.Component {
     return(
       <View style={styles.container}>
         <View style={styles.titleWrapper}>
-          <Text style={styles.title}>Total de colmenas: </Text>
+          <Text style={styles.title}>Total de apiarios: </Text>
           <Text style={[styles.title, {fontWeight: 'bold'}]}>6</Text>
         </View>
         <InfoComponent />

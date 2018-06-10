@@ -12,7 +12,7 @@ class SingleHiveScreen extends React.Component {
   }
 
   render() {
-    var hive = this.props.navigation.getParam('hive', null);
+    var apiary = this.props.navigation.getParam('apiary', null);
     return(
       <View style={styles.container}>
         <Text>HOALHALLDFS</Text>

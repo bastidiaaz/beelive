@@ -3,23 +3,23 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 
-import { fetchHives } from '../../reducers/hivesReducer/hivesActions';
+import { fetchApiaries } from '../../reducers/apiariesReducer/apiariesActions';
 import styles from './styles';
 import List from '../../components/List/List';
 import FabButton from '../../components/FabButton/FabButton';
 
-class HivesScreen extends React.Component {
+class ApiariesScreen extends React.Component {
   static propTypes = {
-    fetchHives: PropTypes.func.isRequired,
+    fetchApiaries: PropTypes.func.isRequired,
     data: PropTypes.array.isRequired
   };
 
   UNSAFE_componentWillMount = () => {
-    this.props.fetchHives();
+    this.props.fetchApiaries();
   }
 
   _onPressItem = (item) => {
-    this.props.navigation.navigate('Colmena', {hive: item});
+    this.props.navigation.navigate('SingleHive', {apiary: item});
   };
 
   render() {
@@ -33,7 +33,7 @@ class HivesScreen extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  data: state.hives.data
+  data: state.apiaries.data
 });
 
-export default connect(mapStateToProps, { fetchHives })(HivesScreen);
+export default connect(mapStateToProps, { fetchApiaries })(ApiariesScreen);

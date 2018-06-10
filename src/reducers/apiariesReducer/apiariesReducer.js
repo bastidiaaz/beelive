@@ -2,9 +2,9 @@ const initialState = {
   data: []
 };
 
-function hivesReducer(state = initialState, action) {
+function apiariesReducer(state = initialState, action) {
   switch(action.type) {
-    case "FETCH_HIVES":
+    case "FETCH_APIARIES":
       return {
         ...state,
         data: action.data
@@ -16,4 +16,4 @@ function hivesReducer(state = initialState, action) {
   }
 }
 
-export default hivesReducer;
+export default apiariesReducer;

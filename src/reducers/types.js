@@ -1,2 +1,2 @@
-export const FETCH_HIVES = "FETCH_HIVES";
+export const FETCH_APIARIES = "FETCH_APIARIES";
 export const GET_ROUTE_NAME = "GET_ROUTE_NAME";

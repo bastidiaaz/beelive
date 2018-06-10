@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import navigationReducer from './navigationReducer/navigationReducer';
-import hivesReducer from './hivesReducer/hivesReducer';
+import apiariesReducer from './apiariesReducer/apiariesReducer';
 
 const appReducer = combineReducers({
   nav: navigationReducer,
-  hives: hivesReducer
+  apiaries: apiariesReducer
 });
 
 export default appReducer;

@@ -3,7 +3,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { StyleSheet } from 'react-native';
 
 import SingleHiveScreen from '../screens/SingleHiveScreen/SingleHiveScreen';
-import HivesScreen from '../screens/HivesScreen/HivesScreen';
+import ApiariesScreen from '../screens/ApiariesScreen/ApiariesScreen';
 import InspectionsScreen from '../screens/InspectionsScreen/InspectionsScreen';
 import SummaryScreen from '../screens/SummaryScreen/SummaryScreen';
 import LoginScreen from '../screens/LoginScreen/LoginScreen';
@@ -16,31 +16,34 @@ var styles = StyleSheet.create({
 });
 
 var stackRoutes = {
-  Colmena: {
+  SingleHive: {
     screen: SingleHiveScreen,
     navigationOptions: ({ navigation }) => ({
-      title: navigation.getParam('hive', null).name
+      title: navigation.getParam('apiary', null).name
     })
   }
 };
 
 var tabRoutes = {
-  Colmenas: {
-    screen: HivesScreen,
+  Apiaries: {
+    screen: ApiariesScreen,
     navigationOptions: ({ navigation }) => ({
-      tabBarIcon: () => <Icon name="forumbee" style={styles.icon}/>
+      tabBarIcon: () => <Icon name="forumbee" style={styles.icon}/>,
+      title: "Apiarios"
     })
   },
-  Inspecciones: {
+  Inspections: {
     screen: InspectionsScreen,
     navigationOptions: ({ navigation }) => ({
-      tabBarIcon: () => <Icon name="bar-chart" style={styles.icon}/>
+      tabBarIcon: () => <Icon name="bar-chart" style={styles.icon}/>,
+      title: "Inspecciones"
     })
   },
-  Resumen: {
+  Summary: {
     screen: SummaryScreen,
     navigationOptions: ({ navigation }) => ({
-      tabBarIcon: () => <Icon name="home" style={styles.icon}/>
+      tabBarIcon: () => <Icon name="home" style={styles.icon}/>,
+      title: "Resumen"
     })
   },
   Login: {
