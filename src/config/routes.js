@@ -2,6 +2,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { StyleSheet } from 'react-native';
 
+import SingleHiveScreen from '../screens/SingleHiveScreen/SingleHiveScreen';
 import HivesScreen from '../screens/HivesScreen/HivesScreen';
 import InspectionsScreen from '../screens/InspectionsScreen/InspectionsScreen';
 import SummaryScreen from '../screens/SummaryScreen/SummaryScreen';
@@ -14,7 +15,16 @@ var styles = StyleSheet.create({
   }
 });
 
-var routes = {
+var stackRoutes = {
+  Colmena: {
+    screen: SingleHiveScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: navigation.getParam('hive', null).name
+    })
+  }
+};
+
+var tabRoutes = {
   Colmenas: {
     screen: HivesScreen,
     navigationOptions: ({ navigation }) => ({
@@ -39,6 +49,6 @@ var routes = {
       tabBarIcon: () => <Icon name="home" style={styles.icon}/>
     })
   },
-}
+};
 
-export default routes;
+export { tabRoutes, stackRoutes };

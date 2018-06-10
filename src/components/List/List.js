@@ -14,6 +14,7 @@ class List extends React.Component {
     <ListItem
       key={item.key}
       leftIcon={<View style={styles.iconContainer}><Icon style={styles.icon} name="forumbee"/></View>}
+      onPress={() => this.props.onPressItem(item)}
       title={item.name}
       subtitle={`Estado: ${item.status}`}
     />

@@ -14,14 +14,18 @@ class HivesScreen extends React.Component {
     data: PropTypes.array.isRequired
   };
 
-  UNSAFE_componentWillMount(){
+  UNSAFE_componentWillMount = () => {
     this.props.fetchHives();
   }
+
+  _onPressItem = (item) => {
+    this.props.navigation.navigate('Colmena', {hive: item});
+  };
 
   render() {
     return(
       <View style={styles.container}>
-        <List data={this.props.data} />
+        <List data={this.props.data} onPressItem={this._onPressItem}/>
         <FabButton />
       </View>
     )
