@@ -1,34 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  FormLabel,
-  FormInput,
-  FormValidationMessage
-} from 'react-native-elements';
 import {
   View,
-  Text,
-  TextInput,
-  TouchableOpacity,
   StyleSheet
 } from 'react-native';
+import t from 'tcomb-form-native';
 import styles from './styles';
+
+const Form = t.form.Form;
+
+const Apiary = t.struct({
+  name: t.String,
+  description: t.String,
+  address: t.String
+});
 
 class EditApiaryScreen extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  _validateText = (text) => {
-    console.log(text);
-  };
-
   render() {
     return(
       <View style={styles.container}>
-        <FormLabel>Nombre</FormLabel>
-        <FormInput onChange={this._validateText()}/>
-        <FormValidationMessage>Error message</FormValidationMessage>
+        <Form type={Apiary} />
       </View>
     )
   }
