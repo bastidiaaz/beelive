@@ -8,14 +8,12 @@ var styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#FFC107',
-    elevation: 0
+    elevation: 0,
   },
   title: {
     fontWeight: 'bold',
     fontSize: 18,
-    color: '#FFF',
-    textAlign:"center",
-    flex:1
+    color: '#FFF'
   }
 });
 

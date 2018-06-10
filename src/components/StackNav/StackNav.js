@@ -12,13 +12,12 @@ import { addNavigationHelpers } from 'react-navigation';
 
 import TabNavElement from '../TabNav/TabNav';
 import styles from './styles';
-import routes from '../../config/routes';
+import { stackRoutes } from '../../config/routes';
 
-routes.TabNav = {
+stackRoutes.TabNav = {
   screen: TabNavElement
 };
 
-console.log(styles);
 var options = {
   initialRouteName: 'TabNav',
   navigationOptions: {
@@ -27,23 +26,13 @@ var options = {
   }
 };
 
-export const StackNavElement = StackNavigator(routes, options);
+export const StackNavElement = StackNavigator(stackRoutes, options);
 
 class StackNav extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     nav: PropTypes.object.isRequired,
   };
-
-  _getScreenName = () => {
-    var index = this.props.nav.index;
-    var route = this.props.nav.routes[index];
-    if (route.routeName === "TabNav") {
-      index = route.index;
-      route = route.routes[index];
-    }
-    return route.routeName;
-  }
 
   render() {
     const { dispatch, nav } = this.props;

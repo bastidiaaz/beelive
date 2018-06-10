@@ -2,7 +2,7 @@ import React from 'react';
 import { TabNavigator } from 'react-navigation';
 
 import styles from './styles';
-import routes from '../../config/routes';
+import { tabRoutes } from '../../config/routes';
 
 var options = {
   initialRouteName: 'Colmenas',
@@ -21,4 +21,4 @@ var options = {
   }
 };
 
-export default TabNavElement = TabNavigator(routes, options);
+export default TabNavElement = TabNavigator(tabRoutes, options);
