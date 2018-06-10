@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  View,
   Text,
-  View
+  TextInput,
+  TouchableOpacity,
+  StyleSheet
 } from 'react-native';
 import styles from './styles';
 
-class SingleHiveScreen extends React.Component {
+class SingleApiaryScreen extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    var apiary = this.props.navigation.getParam('apiary', null);
     return(
       <View style={styles.container}>
         <Text>HOALHALLDFS</Text>
@@ -21,4 +23,4 @@ class SingleHiveScreen extends React.Component {
   }
 }
 
-export default SingleHiveScreen;
+export default SingleApiaryScreen;
