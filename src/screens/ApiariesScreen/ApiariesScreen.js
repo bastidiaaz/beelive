@@ -19,14 +19,14 @@ class ApiariesScreen extends React.Component {
   }
 
   _onPressItem = (item) => {
-    this.props.navigation.navigate('SingleHive', {apiary: item});
+    this.props.navigation.navigate('EditApiary', {apiary: item});
   };
 
   render() {
     return(
       <View style={styles.container}>
         <List data={this.props.data} onPressItem={this._onPressItem}/>
-        <FabButton />
+        <FabButton onPress={() => { this.props.navigation.navigate('CreateApiary') }}/>
       </View>
     )
   }

@@ -3,6 +3,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { StyleSheet } from 'react-native';
 
 import EditApiaryScreen from '../screens/EditApiaryScreen/EditApiaryScreen';
+import CreateApiaryScreen from '../screens/CreateApiaryScreen/CreateApiaryScreen';
 import ApiariesScreen from '../screens/ApiariesScreen/ApiariesScreen';
 import InspectionsScreen from '../screens/InspectionsScreen/InspectionsScreen';
 import SummaryScreen from '../screens/SummaryScreen/SummaryScreen';
@@ -27,10 +28,16 @@ const mapNavigationStateParamsToProps = (SomeComponent) => {
 }
 
 var stackRoutes = {
-  SingleHive: {
+  EditApiary: {
     screen: mapNavigationStateParamsToProps(EditApiaryScreen),
     navigationOptions: ({ navigation }) => ({
       title: navigation.getParam('apiary', null).name
+    })
+  },
+  CreateApiary: {
+    screen: mapNavigationStateParamsToProps(CreateApiaryScreen),
+    navigationOptions: ({ navigation }) => ({
+      title: "Nuevo Apiario"
     })
   }
 };

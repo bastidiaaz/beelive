@@ -5,9 +5,13 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
 
 class FabButton extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  
   render() {
     return(
-      <TouchableOpacity style={styles.fabButton}>
+      <TouchableOpacity onPress={this.props.onPress} style={styles.fabButton}>
         <Icon name="plus" style={styles.icon}/>
       </TouchableOpacity>
     )
