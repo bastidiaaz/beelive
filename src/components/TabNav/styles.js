@@ -1,14 +1,15 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import DEFAULTS from '../../constants';
 
 var styles = StyleSheet.create({
   tab: {
-    backgroundColor: '#FFC107',
-    borderTopColor: '#FFECB3',
+    backgroundColor: DEFAULTS.PRIMARY_COLOR,
+    borderTopColor: DEFAULTS.DIVIDER_COLOR,
     borderTopWidth: 1
   },
   tabIndicator: {
-    backgroundColor: '#FF5722',
+    backgroundColor: DEFAULTS.SECONDARY_COLOR,
     height: 5
   }
 });

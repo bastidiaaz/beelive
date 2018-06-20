@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import DEFAULTS from '../../constants';
 
 var styles = StyleSheet.create({
   container: {
@@ -7,8 +8,8 @@ var styles = StyleSheet.create({
     backgroundColor: '#FFF'
   },
   header: {
-    backgroundColor: '#FFC107',
-    elevation: 0,
+    backgroundColor: DEFAULTS.PRIMARY_COLOR,
+    
   },
   title: {
     fontWeight: 'bold',

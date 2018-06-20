@@ -12,6 +12,7 @@ import { addNavigationHelpers } from 'react-navigation';
 
 import TabNavElement from '../TabNav/TabNav';
 import styles from './styles';
+import DEFAULTS from '../../constants';
 import { stackRoutes } from '../../config/routes';
 
 stackRoutes.TabNav = {
@@ -38,7 +39,7 @@ class StackNav extends React.Component {
     const { dispatch, nav } = this.props;
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor="#FFA000" animated={true} />
+        <StatusBar backgroundColor={DEFAULTS.PRIMARY_COLOR_DARK} animated={true} />
         <StackNavElement
           navigation={addNavigationHelpers({
             dispatch,
