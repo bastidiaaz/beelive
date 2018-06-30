@@ -8,6 +8,10 @@ import t from 'tcomb-form-native';
 import Button from '../../components/Button/Button';
 import styles from './styles';
 
+import { createApiary } from '../../reducers/apiariesReducer/apiariesActions';
+
+import { connect } from 'react-redux';
+
 const Form = t.form.Form;
 
 const Apiary = t.struct({
@@ -35,6 +39,17 @@ class CreateApiaryScreen extends React.Component {
     super(props);
   };
 
+  createApiary = () => {
+    this.props.createApiary({
+      key: "4",
+      name: "FUNCIONO",
+      status: "ASDF",
+      population: "ASDFAFAD"
+    });
+
+    console.log('asdfads');
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -44,11 +59,15 @@ class CreateApiaryScreen extends React.Component {
           </View>
         </ScrollView>
         <View style={styles.footer}>
-          <Button text="CREAR APIARIO" />
+          <Button onPress={this.createApiary} text="CREAR APIARIO" />
         </View>
       </View>
     )
   }
 }
 
-export default CreateApiaryScreen;
+const mapStateToProps = state => ({
+  data: state.apiaries.data
+});
+
+export default connect(mapStateToProps, { createApiary })(CreateApiaryScreen);

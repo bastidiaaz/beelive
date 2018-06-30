@@ -1,2 +1,6 @@
-export const FETCH_APIARIES = "FETCH_APIARIES";
+export const GET_APIARIES = "GET_APIARIES";
+export const CREATE_APIARY = "CREATE_APIARY";
+export const UPDATE_APIARY = 'UPDATE_APIARY';
+export const DELETE_APIARY = 'DELETE_APIARY';
+
 export const GET_ROUTE_NAME = "GET_ROUTE_NAME";

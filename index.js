@@ -1,5 +1,5 @@
 import React from 'react';
-import { YellowBox } from 'react-native';
+import { AsyncStorage, YellowBox } from 'react-native';
 import {
   AppRegistry,
   StatusBar,
@@ -14,7 +14,14 @@ import StackNav from './src/components/StackNav/StackNav';
 
 const store = createStore(appReducer, applyMiddleware(...middlewares));
 
+
 class Main extends React.Component {
+  componentDidMount() {
+    AsyncStorage.getItem('apiaries', (err, apiaries) => {
+      console.log(apiaries);
+    });
+  }
+
   render() {
     return (
       <Provider store={store}>
@@ -29,7 +36,7 @@ AppRegistry.registerComponent('beelive', () => Main);
 export default Main;
 
 
-//Ignore listed warnings 
+//Ignore listed warnings
 YellowBox.ignoreWarnings([
   'Warning: isMounted(...) is deprecated',
   'Remote debugger is in a background tab which may cause apps to perform slowly',

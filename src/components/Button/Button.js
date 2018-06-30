@@ -15,7 +15,7 @@ class Button extends React.Component {
 
   render() {
     return(
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity onPress={() => {this.props.onPress()}} style={styles.container}>
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <Text style={styles.text}>{this.props.text}</Text>
         </View>
