@@ -17,7 +17,8 @@ const Form = t.form.Form;
 const Apiary = t.struct({
   nombre: t.String,
   descripcion: t.String,
-  direccion: t.String
+  latitud: t.Number,
+  longitud: t.Number
 });
 
 const formOptions = {
@@ -28,26 +29,56 @@ const formOptions = {
     descripcion: {
       placeholder: "Ingresa una descripcion para tu apiario"
     },
-    direccion: {
-      placeholder: "Ingresa la direccion de tu apiario"
+    latitud: {
+      placeholder: "Ingresa la latitud de tu apiario"
     },
+    longitud: {
+      placeholder: "Ingresa la longitud de tu apiario"
+    }
   }
 }
 
 class CreateApiaryScreen extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      submitEnabled: false
+    };
   };
 
-  createApiary = () => {
-    this.props.createApiary({
-      key: "4",
-      name: "FUNCIONO",
-      status: "ASDF",
-      population: "ASDFAFAD"
-    });
 
-    console.log('asdfads');
+  formIsValid = () => {
+    if (true) {
+      this.setState({
+        submitEnabled: false
+      });
+    } else {
+      this.setState({
+        submitEnabled: true
+      });
+    }
+  }
+
+  createApiary = () => {
+    var newApiaryForm = this.refs.newApiary;
+    var formIsValid = !newApiaryForm.validate().errors.length > 0;
+
+    if (formIsValid) {
+      var newApiaryValues = newApiaryForm.getValue();
+      var newApiary = {
+        name: newApiaryValues.nombre,
+        description: newApiaryValues.descripcion,
+        lat: newApiaryValues.latitud,
+        long: newApiaryValues.longitud
+      };
+
+      this.props.createApiary(newApiary).then(() => {
+        this.props.navigation.navigate('Apiaries');
+      });
+    } else {
+      console.log('Form invalid');
+    }
   }
 
   render() {
@@ -55,7 +86,7 @@ class CreateApiaryScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.formContainer}>
           <View style={{flex: 1}}>
-            <Form type={Apiary} options={formOptions}/>
+            <Form ref="newApiary" type={Apiary} options={formOptions}/>
           </View>
         </ScrollView>
         <View style={styles.footer}>
@@ -67,7 +98,7 @@ class CreateApiaryScreen extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  data: state.apiaries.data
+  apiaries: state.apiaries
 });
 
 export default connect(mapStateToProps, { createApiary })(CreateApiaryScreen);

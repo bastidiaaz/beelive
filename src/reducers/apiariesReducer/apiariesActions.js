@@ -7,36 +7,44 @@ import {
 
 import { AsyncStorage } from "react-native";
 
-export const getApiaries = () => dispatch => {
-  fetch('http://192.168.1.130:3000/apiaries')
-  .then(response => response.json())
-  .then(apiaries =>
-    dispatch({
-      type: GET_APIARIES,
-      data: apiaries
-    })
-  );
+export const getApiaries = () => async (dispatch) => {
+  try {
+    await AsyncStorage.getItem('apiaries', async (err, apiaries) => {
+      if (apiaries !== null) {
+        apiaries = JSON.parse(apiaries)
+      } else {
+        apiaries = [];
+        await AsyncStorage.setItem('apiaries', JSON.stringify(apiaries));
+      }
+
+      dispatch({
+        type: GET_APIARIES,
+        data: apiaries
+      })
+    });
+  } catch (e) {
+    console.log('Error fetching');
+  }
 };
 
-export const createApiary = (newApiary) => dispatch => {
-  AsyncStorage.getItem('apiaries', (err, apiaries) => {
-    if (apiaries !== null){
+export const createApiary = (newApiary) => async (dispatch) => {
+  // AsyncStorage.clear();
+  try {
+    await AsyncStorage.getItem('apiaries', (err, apiaries) => {
       apiaries = JSON.parse(apiaries);
-      apiaries.unshift(newApiary); //add the new quote to the top
-      AsyncStorage.setItem('apiaries', JSON.stringify(apiaries), () => {
-        dispatch({
-          type: CREATE_APIARY,
-          data: newApiary
+      apiaries.unshift(newApiary);
+      try {
+        AsyncStorage.setItem('apiaries', JSON.stringify(apiaries), () => {
+          dispatch({
+            type: CREATE_APIARY,
+            data: newApiary
+          });
         });
-      });
-    } else {
-      console.log(JSON.stringify([newApiary]));
-      AsyncStorage.setItem('apiaries', JSON.stringify([newApiary]), () => {
-        dispatch({
-          type: CREATE_APIARY,
-          data: newApiary
-        });
-      });
-    }
-  });
+      } catch (e) {
+        console.log('Error setting a new item');
+      }
+    });
+  } catch (e) {
+    console.log('Error setting a new item');
+  }
 };

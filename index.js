@@ -16,9 +16,8 @@ const store = createStore(appReducer, applyMiddleware(...middlewares));
 
 
 class Main extends React.Component {
-  componentDidMount() {
-    AsyncStorage.getItem('apiaries', (err, apiaries) => {
-      console.log(apiaries);
+  async componentDidMount() {
+    await AsyncStorage.getItem('apiaries', (err, apiaries) => {
     });
   }
 

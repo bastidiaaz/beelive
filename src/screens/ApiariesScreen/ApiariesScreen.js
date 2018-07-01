@@ -11,7 +11,7 @@ import FabButton from '../../components/FabButton/FabButton';
 class ApiariesScreen extends React.Component {
   static propTypes = {
     getApiaries: PropTypes.func.isRequired,
-    data: PropTypes.array.isRequired
+    apiaries: PropTypes.object.isRequired
   };
 
   UNSAFE_componentWillMount = () => {
@@ -25,7 +25,7 @@ class ApiariesScreen extends React.Component {
   render() {
     return(
       <View style={styles.container}>
-        <List data={this.props.data} onPressItem={this._onPressItem}/>
+        <List data={this.props.apiaries.data} onPressItem={this._onPressItem}/>
         <FabButton onPress={() => { this.props.navigation.navigate('CreateApiary') }}/>
       </View>
     )
@@ -33,7 +33,7 @@ class ApiariesScreen extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  data: state.apiaries.data
+  apiaries: state.apiaries
 });
 
 export default connect(mapStateToProps, { getApiaries })(ApiariesScreen);

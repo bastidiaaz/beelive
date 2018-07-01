@@ -12,7 +12,6 @@ class List extends React.Component {
 
   _renderItem = ({item}) => (
     <ListItem
-      key={item.key}
       leftIcon={<View style={styles.iconContainer}><Icon style={styles.icon} name="forumbee"/></View>}
       onPress={() => this.props.onPressItem(item)}
       title={item.name}
@@ -25,6 +24,7 @@ class List extends React.Component {
       <FlatList
         data={this.props.data}
         renderItem={this._renderItem}
+        keyExtractor={(item, index) => index.toString()}
       />
     )
   }
