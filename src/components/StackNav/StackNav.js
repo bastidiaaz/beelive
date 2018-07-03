@@ -39,7 +39,7 @@ class StackNav extends React.Component {
     const { dispatch, nav } = this.props;
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor={DEFAULTS.PRIMARY_COLOR_DARK} animated={true} />
+        <StatusBar backgroundColor={DEFAULTS.PRIMARY_COLOR_DARKER} animated={true} />
         <StackNavElement
           navigation={addNavigationHelpers({
             dispatch,
