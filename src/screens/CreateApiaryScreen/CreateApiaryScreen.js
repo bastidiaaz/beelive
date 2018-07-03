@@ -2,25 +2,23 @@ import React from 'react';
 import {
   ScrollView,
   StyleSheet,
+  Text,
   View
 } from 'react-native';
+import MapView from 'react-native-maps';
 import t from 'tcomb-form-native';
+
+import { createApiary } from '../../reducers/apiariesReducer/apiariesActions';
+import { connect } from 'react-redux';
+
 import Button from '../../components/Button/Button';
 import styles from './styles';
 
-import { createApiary } from '../../reducers/apiariesReducer/apiariesActions';
-
-import { connect } from 'react-redux';
-
 const Form = t.form.Form;
-
 const Apiary = t.struct({
   nombre: t.String,
-  descripcion: t.String,
-  latitud: t.Number,
-  longitud: t.Number
+  descripcion: t.String
 });
-
 const formOptions = {
   fields: {
     nombre: {
@@ -28,12 +26,6 @@ const formOptions = {
     },
     descripcion: {
       placeholder: "Ingresa una descripcion para tu apiario"
-    },
-    latitud: {
-      placeholder: "Ingresa la latitud de tu apiario"
-    },
-    longitud: {
-      placeholder: "Ingresa la longitud de tu apiario"
     }
   }
 }
@@ -85,13 +77,23 @@ class CreateApiaryScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.formContainer}>
-          <View style={{flex: 1}}>
+          <View>
             <Form ref="newApiary" type={Apiary} options={formOptions}/>
           </View>
-        </ScrollView>
-        <View style={styles.footer}>
+          <Text style={styles.label}>Ubicación</Text>
+          <View style={styles.mapContainer}>
+            <MapView
+              style={styles.map}
+              initialRegion={{
+                latitude: 37.78825,
+                longitude: -122.4324,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}
+            />
+          </View>
           <Button onPress={this.createApiary} text="CREAR APIARIO" />
-        </View>
+        </ScrollView>
       </View>
     )
   }
