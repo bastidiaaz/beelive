@@ -1,20 +1,14 @@
 import React from 'react';
 import {
-  Image,
   ScrollView,
-  StyleSheet,
   Text,
   View
 } from 'react-native';
-import MapView from 'react-native-maps';
-import {Marker} from 'react-native-maps';
-import marker from  '../../../assets/images/map_marker.png';
 import t from 'tcomb-form-native';
-
 import { createApiary } from '../../reducers/apiariesReducer/apiariesActions';
 import { connect } from 'react-redux';
-
 import Button from '../../components/Button/Button';
+import MapPointSelector from '../../components/MapPointSelector/MapPointSelector';
 import styles from './styles';
 
 const Form = t.form.Form;
@@ -100,20 +94,7 @@ class CreateApiaryScreen extends React.Component {
             <Form value={this.state.formValue} onChange={this.onFormChange} ref="newApiary" type={Apiary} options={formOptions}/>
           </View>
           <Text style={styles.label}>Ubicación</Text>
-          <View style={styles.mapContainer}>
-            <MapView
-              style={styles.map}
-              initialRegion={{
-                latitude: -38.736854,
-                longitude: -72.590328,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-              }}
-              onRegionChange={this.onRegionChange} />
-            <View pointerEvents="none" style={{flex: 1}}>
-              <Image style={styles.marker} source={marker} />
-            </View>
-          </View>
+          <MapPointSelector initialRegion={this.state.region} onRegionChange={this.state.onRegionChange} />
           <Button onPress={this.createApiary} text="CREAR APIARIO" />
         </ScrollView>
       </View>
