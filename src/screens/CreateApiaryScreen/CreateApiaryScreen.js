@@ -1,11 +1,14 @@
 import React from 'react';
 import {
+  Image,
   ScrollView,
   StyleSheet,
   Text,
   View
 } from 'react-native';
 import MapView from 'react-native-maps';
+import {Marker} from 'react-native-maps';
+import marker from  '../../../assets/images/map_marker.png';
 import t from 'tcomb-form-native';
 
 import { createApiary } from '../../reducers/apiariesReducer/apiariesActions';
@@ -35,22 +38,38 @@ class CreateApiaryScreen extends React.Component {
     super(props);
 
     this.state = {
-      submitEnabled: false
+      region: {
+        latitude: -38.736854,
+        longitude: -72.590328,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }
     };
   };
 
-
-  formIsValid = () => {
-    if (true) {
-      this.setState({
-        submitEnabled: false
-      });
-    } else {
-      this.setState({
-        submitEnabled: true
-      });
-    }
+  getInitialState() {
+    return {
+      formValue: null,
+      region: {
+        latitude: -38.736854,
+        longitude: -72.590328,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      },
+    };
   }
+
+  onFormChange = (formValue) => {
+    this.setState({
+      formValue: formValue
+    });
+  };
+
+  onRegionChange = (region) => {
+    this.setState({
+      region: region
+    });
+  };
 
   createApiary = () => {
     var newApiaryForm = this.refs.newApiary;
@@ -61,8 +80,8 @@ class CreateApiaryScreen extends React.Component {
       var newApiary = {
         name: newApiaryValues.nombre,
         description: newApiaryValues.descripcion,
-        lat: newApiaryValues.latitud,
-        long: newApiaryValues.longitud
+        lat: this.state.region.latitude,
+        long: this.state.region.longitude
       };
 
       this.props.createApiary(newApiary).then(() => {
@@ -78,19 +97,22 @@ class CreateApiaryScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.formContainer}>
           <View>
-            <Form ref="newApiary" type={Apiary} options={formOptions}/>
+            <Form value={this.state.formValue} onChange={this.onFormChange} ref="newApiary" type={Apiary} options={formOptions}/>
           </View>
           <Text style={styles.label}>Ubicación</Text>
           <View style={styles.mapContainer}>
             <MapView
               style={styles.map}
               initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
+                latitude: -38.736854,
+                longitude: -72.590328,
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421,
               }}
-            />
+              onRegionChange={this.onRegionChange} />
+            <View pointerEvents="none" style={{flex: 1}}>
+              <Image style={styles.marker} source={marker} />
+            </View>
           </View>
           <Button onPress={this.createApiary} text="CREAR APIARIO" />
         </ScrollView>
