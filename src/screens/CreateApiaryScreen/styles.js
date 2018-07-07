@@ -1,5 +1,5 @@
 import React from 'react';
-import DEFAULTS from '../../constants';
+import DEFAULTS from '../../utils/constants';
 import { StyleSheet } from 'react-native';
 
 var styles = StyleSheet.create({
