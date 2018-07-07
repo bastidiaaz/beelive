@@ -9,12 +9,13 @@ var styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: DEFAULTS.SECONDARY_COLOR,
     position: 'absolute',
-    bottom: 10,
-    right: 10,
+    bottom: 15,
+    right: 15,
     alignItems:'center',
     justifyContent:'center',
     borderWidth:1,
-    borderColor: DEFAULTS.SECONDARY_BODER_COLOR
+    borderColor: DEFAULTS.SECONDARY_BODER_COLOR,
+    elevation: 4
   },
   icon: {
     fontSize: 20,
