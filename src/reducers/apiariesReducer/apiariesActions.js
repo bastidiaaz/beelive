@@ -4,7 +4,6 @@ import {
   UPDATE_APIARY,
   DELETE_APIARY
 } from '../types';
-
 import { AsyncStorage } from "react-native";
 
 export const getApiaries = () => async (dispatch) => {

@@ -4,6 +4,7 @@ import {
   Text,
   View
 } from 'react-native';
+import _ from 'lodash';
 import t from 'tcomb-form-native';
 import { createApiary } from '../../reducers/apiariesReducer/apiariesActions';
 import { connect } from 'react-redux';
@@ -32,6 +33,7 @@ class CreateApiaryScreen extends React.Component {
     super(props);
 
     this.state = {
+      formValue: null,
       region: {
         latitude: -38.736854,
         longitude: -72.590328,
@@ -40,18 +42,6 @@ class CreateApiaryScreen extends React.Component {
       }
     };
   };
-
-  getInitialState() {
-    return {
-      formValue: null,
-      region: {
-        latitude: -38.736854,
-        longitude: -72.590328,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      },
-    };
-  }
 
   onFormChange = (formValue) => {
     this.setState({
@@ -67,6 +57,7 @@ class CreateApiaryScreen extends React.Component {
 
   createApiary = () => {
     var newApiaryForm = this.refs.newApiary;
+    console.log(newApiaryForm);
     var formIsValid = !newApiaryForm.validate().errors.length > 0;
 
     if (formIsValid) {
@@ -78,9 +69,14 @@ class CreateApiaryScreen extends React.Component {
         long: this.state.region.longitude
       };
 
-      this.props.createApiary(newApiary).then(() => {
-        this.props.navigation.navigate('Apiaries');
-      });
+      var isDuplicated = !_.isUndefined(_.find(this.props.apiaries.data, ['name', newApiary.name]));
+      if (!isDuplicated) {
+        this.props.createApiary(newApiary).then(() => {
+          this.props.navigation.navigate('Apiaries');
+        });
+      } else {
+        console.log('Duplicated Apiary');
+      }
     } else {
       console.log('Form invalid');
     }
