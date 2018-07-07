@@ -8,12 +8,7 @@ import List from '../../components/List/List';
 import FabButton from '../../components/FabButton/FabButton';
 
 class ApiariesScreen extends React.Component {
-  static propTypes = {
-    getApiaries: PropTypes.func.isRequired,
-    apiaries: PropTypes.object.isRequired
-  };
-
-  UNSAFE_componentWillMount = () => {
+  componentDidMount = () => {
     this.props.getApiaries();
   };
 

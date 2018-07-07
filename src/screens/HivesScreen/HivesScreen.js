@@ -1,7 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { getHives } from '../../reducers/hivesReducer/hivesActions';
 import { View } from 'react-native';
+import List from '../../components/List/List';
+import FabButton from '../../components/FabButton/FabButton';
+import { getHives } from '../../reducers/hivesReducer/hivesActions';
 import { connect } from 'react-redux';
 import styles from './styles';
 
@@ -11,9 +12,10 @@ class HivesScreen extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return(
       <View style={styles.container}>
+        <List data={this.props.hives.data}/>
+        <FabButton onPress={() => { this.props.navigation.navigate('CreateHive') }}/>
       </View>
     )
   }
