@@ -31,4 +31,4 @@ var tabRoutes = {
   }
 };
 
-export default TabNavElement = TabNavigator(tabRoutes, options);
+export default MainScreen = TabNavigator(tabRoutes, options);

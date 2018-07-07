@@ -11,15 +11,15 @@ import { addListener } from '../../utils/redux';
 import { addNavigationHelpers } from 'react-navigation';
 import { mapNavigationStateParamsToProps } from '../../utils/helpers.js';
 
-import TabNavElement from '../TabNav/TabNav';
-import EditApiaryScreen from '../../screens/EditApiaryScreen/EditApiaryScreen';
+import MainScreen from '../../screens/MainScreen/MainScreen';
+import SingleApiaryScreen from '../../screens/SingleApiaryScreen/SingleApiaryScreen';
 import CreateApiaryScreen from '../../screens/CreateApiaryScreen/CreateApiaryScreen';
 
 import styles from './styles';
 import DEFAULTS from '../../utils/constants';
 
 var options = {
-  initialRouteName: 'TabNav',
+  initialRouteName: 'Main',
   navigationOptions: {
     headerStyle: styles.header,
     headerTitleStyle: styles.title
@@ -27,8 +27,8 @@ var options = {
 };
 
 var stackRoutes = {
-  TabNav: {
-    screen: TabNavElement
+  Main: {
+    screen: MainScreen
   },
   EditApiary: {
     screen: mapNavigationStateParamsToProps(EditApiaryScreen),
