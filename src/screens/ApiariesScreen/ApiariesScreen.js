@@ -19,7 +19,7 @@ class ApiariesScreen extends React.Component {
   }
 
   _onPressItem = (item) => {
-    this.props.navigation.navigate('EditApiary', {apiary: item});
+    this.props.navigation.navigate('SingleApiary', {apiary: item});
   };
 
   render() {

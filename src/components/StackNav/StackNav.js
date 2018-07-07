@@ -30,10 +30,10 @@ var stackRoutes = {
   Main: {
     screen: MainScreen
   },
-  EditApiary: {
-    screen: mapNavigationStateParamsToProps(EditApiaryScreen),
+  SingleApiary: {
+    screen: SingleApiaryScreen,
     navigationOptions: ({ navigation }) => ({
-      title: navigation.getParam('apiary', null).name
+
     })
   },
   CreateApiary: {
