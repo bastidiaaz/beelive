@@ -2,6 +2,7 @@ import React from 'react';
 import {
   ScrollView,
   Text,
+  ToastAndroid,
   View
 } from 'react-native';
 import _ from 'lodash';
@@ -14,16 +15,18 @@ import styles from './styles';
 
 const Form = t.form.Form;
 const Apiary = t.struct({
-  nombre: t.String,
-  descripcion: t.String
+  name: t.String,
+  description: t.maybe(t.String)
 });
 const formOptions = {
   fields: {
-    nombre: {
-      placeholder: "Ingresa un nombre para tu apiario"
+    name: {
+      label: 'Nombre *',
+      placeholder: 'Ingresa un nombre para tu apiario'
     },
-    descripcion: {
-      placeholder: "Ingresa una descripcion para tu apiario"
+    description: {
+      label: 'Descripción',
+      placeholder: 'Ingresa una descripción para tu apiario'
     }
   }
 }
@@ -57,14 +60,13 @@ class CreateApiaryScreen extends React.Component {
 
   createApiary = () => {
     var newApiaryForm = this.refs.newApiary;
-    console.log(newApiaryForm);
     var formIsValid = !newApiaryForm.validate().errors.length > 0;
 
     if (formIsValid) {
       var newApiaryValues = newApiaryForm.getValue();
       var newApiary = {
-        name: newApiaryValues.nombre,
-        description: newApiaryValues.descripcion,
+        name: newApiaryValues.name,
+        description: newApiaryValues.description,
         lat: this.state.region.latitude,
         long: this.state.region.longitude
       };
@@ -75,9 +77,11 @@ class CreateApiaryScreen extends React.Component {
           this.props.navigation.navigate('Apiaries');
         });
       } else {
+        ToastAndroid.show('Nombre de apiario en uso', ToastAndroid.SHORT);
         console.log('Duplicated Apiary');
       }
     } else {
+      ToastAndroid.show('Debe llenar los campos obligatorios', ToastAndroid.SHORT);
       console.log('Form invalid');
     }
   }
