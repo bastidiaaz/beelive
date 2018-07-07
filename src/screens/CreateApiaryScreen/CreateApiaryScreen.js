@@ -71,7 +71,7 @@ class CreateApiaryScreen extends React.Component {
       };
 
       this.props.createApiary(newApiary, () => {
-        this.props.navigation.navigate('Apiaries');
+        this.props.navigation.goBack();
         ToastAndroid.show('Apiario creado', ToastAndroid.SHORT);
       });
     } else {
