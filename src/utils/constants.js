@@ -18,11 +18,14 @@ const DEFAULT_STYLES = {
     SECONDARY_BODER_COLOR: '#FFCCBC',
     TEXT_COLOR_INVERSE: '#FFF',
 
-    //Font sizes
+    //Labels
     LABEL_NORMAL_COLOR: '#00838F',
     LABEL_FONT_SIZE: 17,
     LABEL_FONT_WEIGHT: 'bold',
-    LABEL_MARGIN_BOTTOM: 5
+    LABEL_MARGIN_BOTTOM: 5,
+
+    //Titles
+    TITLE_BIG_FONT_SIZE: 24
 };
 
 t.form.Form.stylesheet.controlLabel.normal.color = DEFAULT_STYLES.LABEL_NORMAL_COLOR;

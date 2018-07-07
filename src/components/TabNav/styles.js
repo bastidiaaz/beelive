@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import DEFAULTS from '../../constants';
+import DEFAULTS from '../../utils/constants';
 
 var styles = StyleSheet.create({
   tab: {
@@ -11,6 +11,10 @@ var styles = StyleSheet.create({
   tabIndicator: {
     backgroundColor: DEFAULTS.SECONDARY_COLOR,
     height: 5
+  },
+  icon: {
+    fontSize: 22,
+    color: '#FFF'
   }
 });
 

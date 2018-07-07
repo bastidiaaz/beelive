@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import DEFAULTS from '../../constants';
+import DEFAULTS from '../../utils/constants';
 
 var styles = StyleSheet.create({
   container: {
