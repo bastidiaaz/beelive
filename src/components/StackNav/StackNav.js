@@ -9,21 +9,38 @@ import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import { addListener } from '../../utils/redux';
 import { addNavigationHelpers } from 'react-navigation';
+import { mapNavigationStateParamsToProps } from '../../utils/helpers.js';
 
 import TabNavElement from '../TabNav/TabNav';
-import styles from './styles';
-import DEFAULTS from '../../constants';
-import { stackRoutes } from '../../config/routes';
+import EditApiaryScreen from '../../screens/EditApiaryScreen/EditApiaryScreen';
+import CreateApiaryScreen from '../../screens/CreateApiaryScreen/CreateApiaryScreen';
 
-stackRoutes.TabNav = {
-  screen: TabNavElement
-};
+import styles from './styles';
+import DEFAULTS from '../../utils/constants';
 
 var options = {
   initialRouteName: 'TabNav',
   navigationOptions: {
     headerStyle: styles.header,
     headerTitleStyle: styles.title
+  }
+};
+
+var stackRoutes = {
+  TabNav: {
+    screen: TabNavElement
+  },
+  EditApiary: {
+    screen: mapNavigationStateParamsToProps(EditApiaryScreen),
+    navigationOptions: ({ navigation }) => ({
+      title: navigation.getParam('apiary', null).name
+    })
+  },
+  CreateApiary: {
+    screen: mapNavigationStateParamsToProps(CreateApiaryScreen),
+    navigationOptions: ({ navigation }) => ({
+      title: "Nuevo Apiario"
+    })
   }
 };
 
