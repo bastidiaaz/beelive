@@ -4,7 +4,8 @@ import {
   UPDATE_APIARY,
   DELETE_APIARY
 } from '../types';
-import { AsyncStorage } from "react-native";
+import _ from 'lodash';
+import { AsyncStorage, ToastAndroid } from "react-native";
 
 export const getApiaries = () => async (dispatch) => {
   try {
@@ -26,21 +27,28 @@ export const getApiaries = () => async (dispatch) => {
   }
 };
 
-export const createApiary = (newApiary) => async (dispatch) => {
+export const createApiary = (newApiary, success) => async (dispatch) => {
   // AsyncStorage.clear();
   try {
     await AsyncStorage.getItem('apiaries', (err, apiaries) => {
       apiaries = JSON.parse(apiaries);
-      apiaries.unshift(newApiary);
-      try {
-        AsyncStorage.setItem('apiaries', JSON.stringify(apiaries), () => {
-          dispatch({
-            type: CREATE_APIARY,
-            data: newApiary
-          });
-        });
-      } catch (e) {
-        console.log('Error setting a new item');
+
+      var isDuplicated = !_.isUndefined(_.find(apiaries, ['name', newApiary.name]));
+      if (!isDuplicated) {
+        try {
+          apiaries.unshift(newApiary);
+          AsyncStorage.setItem('apiaries', JSON.stringify(apiaries), () => {
+            dispatch({
+              type: CREATE_APIARY,
+              data: newApiary
+            });
+          }).then(success);
+        } catch (e) {
+          console.log('Error setting a new item');
+        }
+      } else {
+        ToastAndroid.show('Nombre de apiario en uso', ToastAndroid.SHORT);
+        console.log('Duplicated Apiary');
       }
     });
   } catch (e) {

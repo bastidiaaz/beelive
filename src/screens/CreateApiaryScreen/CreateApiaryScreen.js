@@ -5,7 +5,6 @@ import {
   ToastAndroid,
   View
 } from 'react-native';
-import _ from 'lodash';
 import t from 'tcomb-form-native';
 import { createApiary } from '../../reducers/apiariesReducer/apiariesActions';
 import { connect } from 'react-redux';
@@ -71,15 +70,10 @@ class CreateApiaryScreen extends React.Component {
         long: this.state.region.longitude
       };
 
-      var isDuplicated = !_.isUndefined(_.find(this.props.apiaries.data, ['name', newApiary.name]));
-      if (!isDuplicated) {
-        this.props.createApiary(newApiary).then(() => {
-          this.props.navigation.navigate('Apiaries');
-        });
-      } else {
-        ToastAndroid.show('Nombre de apiario en uso', ToastAndroid.SHORT);
-        console.log('Duplicated Apiary');
-      }
+      this.props.createApiary(newApiary, () => {
+        this.props.navigation.navigate('Apiaries');
+        ToastAndroid.show('Apiario creado', ToastAndroid.SHORT);
+      });
     } else {
       ToastAndroid.show('Debe llenar los campos obligatorios', ToastAndroid.SHORT);
       console.log('Form invalid');
