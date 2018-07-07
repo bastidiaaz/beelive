@@ -12,23 +12,23 @@ export const getHives = () => async (dispatch) => {
     type: GET_HIVES,
     data: 'asd'
   });
-  // try {
-  //   await AsyncStorage.getItem('hives', async (err, hives) => {
-  //     if (hives !== null) {
-  //       hives = JSON.parse(hives)
-  //     } else {
-  //       hives = [];
-  //       await AsyncStorage.setItem('hives', JSON.stringify(hives));
-  //     }
-  //
-  //     dispatch({
-  //       type: GET_HIVES,
-  //       data: hives
-  //     })
-  //   });
-  // } catch (e) {
-  //   console.log('Error fetching');
-  // }
+  try {
+    await AsyncStorage.getItem('hives', async (err, hives) => {
+      if (hives !== null) {
+        hives = JSON.parse(hives)
+      } else {
+        hives = [];
+        await AsyncStorage.setItem('hives', JSON.stringify(hives));
+      }
+
+      dispatch({
+        type: GET_HIVES,
+        data: hives
+      })
+    });
+  } catch (e) {
+    console.log('Error fetching');
+  }
 };
 
 export const createHive = (newHive) => async (dispatch) => {

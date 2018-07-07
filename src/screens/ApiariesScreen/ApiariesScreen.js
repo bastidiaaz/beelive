@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-
 import { getApiaries } from '../../reducers/apiariesReducer/apiariesActions';
 import styles from './styles';
 import List from '../../components/List/List';
@@ -16,7 +15,7 @@ class ApiariesScreen extends React.Component {
 
   UNSAFE_componentWillMount = () => {
     this.props.getApiaries();
-  }
+  };
 
   _onPressItem = (item) => {
     this.props.navigation.navigate('SingleApiary', {apiary: item});
