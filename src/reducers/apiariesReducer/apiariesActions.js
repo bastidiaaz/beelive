@@ -47,7 +47,7 @@ export const createApiary = (newApiary, success) => async (dispatch) => {
           console.log('Error setting a new item');
         }
       } else {
-        ToastAndroid.show('Nombre de apiario en uso', ToastAndroid.SHORT);
+        ToastAndroid.show('Ya existe un apiario con este nombre', ToastAndroid.SHORT);
         console.log('Duplicated Apiary');
       }
     });
