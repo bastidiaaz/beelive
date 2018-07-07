@@ -8,7 +8,7 @@ import styles from './styles';
 
 class HivesScreen extends React.Component {
   componentDidMount = () => {
-    this.props.getHives();
+    this.props.getHives(this.props.apiary.name);
   };
 
   render() {

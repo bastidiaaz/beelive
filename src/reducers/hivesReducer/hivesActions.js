@@ -8,7 +8,7 @@ import {
 import _ from 'lodash';
 import { AsyncStorage, ToastAndroid } from "react-native";
 
-export const getHives = () => async (dispatch) => {
+export const getHives = (key) => async (dispatch) => {
   dispatch({
     type: GET_HIVES,
     data: 'asd'
@@ -16,7 +16,8 @@ export const getHives = () => async (dispatch) => {
   try {
     await AsyncStorage.getItem('hives', async (err, hives) => {
       if (hives !== null) {
-        hives = JSON.parse(hives)
+        hives = JSON.parse(hives);
+        var apiaryHives = _.filter(hives, ['apiary', key]);
       } else {
         hives = [];
         await AsyncStorage.setItem('hives', JSON.stringify(hives));
@@ -24,7 +25,7 @@ export const getHives = () => async (dispatch) => {
 
       dispatch({
         type: GET_HIVES,
-        data: hives
+        data: apiaryHives
       })
     });
   } catch (e) {
@@ -32,12 +33,12 @@ export const getHives = () => async (dispatch) => {
   }
 };
 
-export const createHive = (newHive, success) => async (dispatch) => {
+export const createHive = (key, newHive, success) => async (dispatch) => {
   // AsyncStorage.clear();
   try {
     await AsyncStorage.getItem('hives', (err, hives) => {
       hives = JSON.parse(hives);
-      var apiaryHives = _.filter(hives, ['apiary', newHive.apiary]);
+      var apiaryHives = _.filter(hives, ['apiary', key]);
 
       var isDuplicated = !_.isUndefined(_.find(apiaryHives, ['name', newHive.name]));
       if (!isDuplicated) {

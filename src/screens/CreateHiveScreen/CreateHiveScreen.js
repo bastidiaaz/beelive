@@ -57,7 +57,7 @@ class CreateHiveScreen extends React.Component {
         apiary: this.props.navigation.getParam('apiary').name
       };
 
-      this.props.createHive(newHive, () => {
+      this.props.createHive(newHive.apiary, newHive, () => {
         this.props.navigation.goBack();
         ToastAndroid.show('Colmena creada', ToastAndroid.SHORT);
       });
