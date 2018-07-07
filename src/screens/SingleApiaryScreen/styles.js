@@ -4,9 +4,7 @@ import DEFAULTS from '../../utils/constants';
 
 var styles = StyleSheet.create({
   tab: {
-    backgroundColor: DEFAULTS.PRIMARY_COLOR,
-    borderTopColor: DEFAULTS.DIVIDER_COLOR,
-    borderTopWidth: 1
+    backgroundColor: DEFAULTS.PRIMARY_COLOR
   },
   tabIndicator: {
     backgroundColor: DEFAULTS.SECONDARY_COLOR,

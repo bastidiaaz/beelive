@@ -9,7 +9,10 @@ var styles = StyleSheet.create({
   },
   header: {
     backgroundColor: DEFAULTS.PRIMARY_COLOR,
-    
+  },
+  headerCombined: {
+    backgroundColor: DEFAULTS.PRIMARY_COLOR,
+    elevation: 0
   },
   title: {
     fontWeight: 'bold',
