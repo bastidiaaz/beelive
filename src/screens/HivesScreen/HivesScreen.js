@@ -15,7 +15,7 @@ class HivesScreen extends React.Component {
     return(
       <View style={styles.container}>
         <List data={this.props.hives.data}/>
-        <FabButton onPress={() => { this.props.navigation.navigate('CreateHive') }}/>
+        <FabButton onPress={() => { this.props.navigation.navigate('CreateHive', {apiary: this.props.apiary}) }}/>
       </View>
     )
   }

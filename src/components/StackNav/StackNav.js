@@ -12,8 +12,10 @@ import { addNavigationHelpers } from 'react-navigation';
 import { mapNavigationStateParamsToProps } from '../../utils/helpers.js';
 
 import MainScreen from '../../screens/MainScreen/MainScreen';
-import SingleApiaryScreen from '../../screens/SingleApiaryScreen/SingleApiaryScreen';
+
 import CreateApiaryScreen from '../../screens/CreateApiaryScreen/CreateApiaryScreen';
+import SingleApiaryScreen from '../../screens/SingleApiaryScreen/SingleApiaryScreen';
+import CreateHiveScreen from '../../screens/CreateHiveScreen/CreateHiveScreen';
 
 import styles from './styles';
 import DEFAULTS from '../../utils/constants';
@@ -30,6 +32,12 @@ var stackRoutes = {
   Main: {
     screen: MainScreen
   },
+  CreateApiary: {
+    screen: mapNavigationStateParamsToProps(CreateApiaryScreen),
+    navigationOptions: ({ navigation }) => ({
+      title: "Nuevo Apiario"
+    })
+  },
   SingleApiary: {
     screen: SingleApiaryScreen,
     navigationOptions: ({ navigation }) => ({
@@ -37,12 +45,12 @@ var stackRoutes = {
       headerStyle: styles.headerCombined
     })
   },
-  CreateApiary: {
-    screen: mapNavigationStateParamsToProps(CreateApiaryScreen),
+  CreateHive: {
+    screen: mapNavigationStateParamsToProps(CreateHiveScreen),
     navigationOptions: ({ navigation }) => ({
-      title: "Nuevo Apiario"
+      title: "Nueva Colmena"
     })
-  }
+  },
 };
 
 export const StackNavElement = StackNavigator(stackRoutes, options);
