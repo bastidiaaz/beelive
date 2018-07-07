@@ -33,7 +33,7 @@ var stackRoutes = {
   SingleApiary: {
     screen: SingleApiaryScreen,
     navigationOptions: ({ navigation }) => ({
-
+      title: navigation.getParam('apiary', null).name
     })
   },
   CreateApiary: {
