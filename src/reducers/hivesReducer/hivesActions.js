@@ -5,7 +5,8 @@ import {
   DELETE_HIVE
 } from '../types';
 
-import { AsyncStorage } from "react-native";
+import _ from 'lodash';
+import { AsyncStorage, ToastAndroid } from "react-native";
 
 export const getHives = () => async (dispatch) => {
   dispatch({
@@ -31,21 +32,29 @@ export const getHives = () => async (dispatch) => {
   }
 };
 
-export const createHive = (newHive) => async (dispatch) => {
+export const createHive = (newHive, success) => async (dispatch) => {
   // AsyncStorage.clear();
   try {
     await AsyncStorage.getItem('hives', (err, hives) => {
       hives = JSON.parse(hives);
-      hives.unshift(newApiary);
-      try {
-        AsyncStorage.setItem('hives', JSON.stringify(hives), () => {
-          dispatch({
-            type: CREATE_HIVE,
-            data: newHive
-          });
-        });
-      } catch (e) {
-        console.log('Error setting a new item');
+      var apiaryHives = _.filter(hives, ['apiary', newHive.apiary]);
+
+      var isDuplicated = !_.isUndefined(_.find(apiaryHives, ['name', newHive.name]));
+      if (!isDuplicated) {
+        hives.unshift(newHive);
+        try {
+          AsyncStorage.setItem('hives', JSON.stringify(hives), () => {
+            dispatch({
+              type: CREATE_HIVE,
+              data: newHive
+            });
+          }).then(success);
+        } catch (e) {
+          console.log('Error setting a new item');
+        }
+      } else {
+        ToastAndroid.show('Ya existe una colmena con este nombre en este apiario', ToastAndroid.SHORT);
+        console.log('Duplicated Apiary');
       }
     });
   } catch (e) {

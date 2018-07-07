@@ -2,6 +2,7 @@ import React from 'react';
 import {
   ScrollView,
   Text,
+  ToastAndroid,
   View
 } from 'react-native';
 import t from 'tcomb-form-native';
@@ -12,16 +13,18 @@ import styles from './styles';
 
 const Form = t.form.Form;
 const Hive = t.struct({
-  nombre: t.String,
-  descripcion: t.String
+  name: t.String,
+  description: t.maybe(t.String)
 });
 const formOptions = {
   fields: {
-    nombre: {
-      placeholder: "Ingresa un nombre para tu colmena"
+    name: {
+      label: 'Nombre *',
+      placeholder: 'Ingresa un nombre para tu colmena'
     },
-    descripcion: {
-      placeholder: "Ingresa una descripcion para tu colmena"
+    description: {
+      label: 'Descripción',
+      placeholder: 'Ingresa una descripción para tu colmena'
     }
   }
 }
@@ -33,7 +36,7 @@ class CreateHiveScreen extends React.Component {
     this.state = {
       formValue: null
     };
-    console.log(this.props.navigation.getParam('apiary'));
+    console.log(this.props.navigation);
   };
 
   onFormChange = (formValue) => {
@@ -49,14 +52,17 @@ class CreateHiveScreen extends React.Component {
     if (formIsValid) {
       var newHiveValues = newHiveForm.getValue();
       var newHive = {
-        name: newHiveValues.nombre,
-        description: newHiveValues.descripcion
+        name: newHiveValues.name,
+        description: newHiveValues.description,
+        apiary: this.props.navigation.getParam('apiary').name
       };
 
-      this.props.createHive(newHive).then(() => {
-        // this.props.navigation.navigate('SingleApiary', {apiary: });
+      this.props.createHive(newHive, () => {
+        this.props.navigation.goBack();
+        ToastAndroid.show('Colmena creada', ToastAndroid.SHORT);
       });
     } else {
+      ToastAndroid.show('Debe llenar los campos obligatorios', ToastAndroid.SHORT);
       console.log('Form invalid');
     }
   }
