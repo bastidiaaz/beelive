@@ -1,7 +1,7 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
 import { mapNavigationStateParamsToProps } from '../../utils/helpers.js';
-import HivesScreen from '../../screens/HivesScreen/HivesScreen';
+import ApiaryHivesScreen from '../../screens/ApiaryHivesScreen/ApiaryHivesScreen';
 import styles from './styles';
 
 var options = {

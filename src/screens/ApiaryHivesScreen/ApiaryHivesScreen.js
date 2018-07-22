@@ -6,7 +6,7 @@ import { getHives } from '../../reducers/hivesReducer/hivesActions';
 import { connect } from 'react-redux';
 import styles from './styles';
 
-class HivesScreen extends React.Component {
+class ApiaryHivesScreen extends React.Component {
   componentDidMount = () => {
     this.props.getHives(this.props.apiary.name);
   };
@@ -25,4 +25,4 @@ const mapStateToProps = state => ({
   hives: state.hives
 });
 
-export default connect(mapStateToProps, { getHives })(HivesScreen);
+export default connect(mapStateToProps, { getHives })(ApiaryHivesScreen);
