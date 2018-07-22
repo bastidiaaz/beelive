@@ -2,6 +2,7 @@ import React from 'react';
 import { TabNavigator } from 'react-navigation';
 import { mapNavigationStateParamsToProps } from '../../utils/helpers.js';
 import ApiaryHivesScreen from '../../screens/ApiaryHivesScreen/ApiaryHivesScreen';
+import ApiaryInfoScreen from '../../screens/ApiaryInfoScreen/ApiaryInfoScreen';
 import styles from './styles';
 
 var options = {
@@ -21,9 +22,15 @@ var options = {
 
 var tabRoutes = {
   Hives: {
-    screen: mapNavigationStateParamsToProps(HivesScreen),
+    screen: mapNavigationStateParamsToProps(ApiaryHivesScreen),
     navigationOptions: ({ navigation }) => ({
       title: "Colmenas"
+    })
+  },
+  Info: {
+    screen: mapNavigationStateParamsToProps(ApiaryInfoScreen),
+    navigationOptions: ({ navigation }) => ({
+      title: "Info"
     })
   }
 };
