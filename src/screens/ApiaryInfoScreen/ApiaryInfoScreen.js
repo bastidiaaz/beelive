@@ -91,8 +91,7 @@ class ApiaryInfoScreen extends React.Component {
           <Form value={this.state.formValue} onChange={this.onFormChange} ref="apiary" type={Apiary} options={formOptions}/>
         </View>
         <Text style={styles.label}>Ubicación</Text>
-        <MapPointSelector initialRegion={this.state.region} onRegionChange={this.onRegionChange} />
-        <Button onPress={this.createApiary} text="CREAR APIARIO" />
+        <MapPointSelector scrollEnabled={false} initialRegion={this.state.region} onRegionChange={this.onRegionChange} />
       </View>
     )
   }

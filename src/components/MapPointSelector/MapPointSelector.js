@@ -18,7 +18,9 @@ class MapPointSelector extends React.Component {
         <MapView
           style={styles.map}
           initialRegion={this.props.initialRegion}
-          onRegionChange={this.props.onRegionChange} />
+          onRegionChange={this.props.onRegionChange}
+          loadingEnabled={true}
+          scrollEnabled={this.props.scrollEnabled}/>
         <View pointerEvents="none" style={{flex: 1}}>
           <Image style={styles.marker} source={marker} />
         </View>
