@@ -4,9 +4,8 @@ import { StyleSheet } from 'react-native';
 
 var styles = StyleSheet.create({
   mapContainer: {
-    height: 330,
-    width: 'auto',
-    marginBottom: 10
+    marginBottom: 10,
+    flex: 1
   },
   map: {
     ...StyleSheet.absoluteFillObject,

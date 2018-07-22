@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  ScrollView,
   Text,
   ToastAndroid,
   View
@@ -83,14 +82,12 @@ class CreateApiaryScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.formContainer}>
-          <View>
-            <Form value={this.state.formValue} onChange={this.onFormChange} ref="newApiary" type={Apiary} options={formOptions}/>
-          </View>
-          <Text style={styles.label}>Ubicación</Text>
-          <MapPointSelector initialRegion={this.state.region} onRegionChange={this.state.onRegionChange} />
-          <Button onPress={this.createApiary} text="CREAR APIARIO" />
-        </ScrollView>
+        <View>
+          <Form value={this.state.formValue} onChange={this.onFormChange} ref="newApiary" type={Apiary} options={formOptions}/>
+        </View>
+        <Text style={styles.label}>Ubicación</Text>
+        <MapPointSelector initialRegion={this.state.region} onRegionChange={this.onRegionChange} />
+        <Button onPress={this.createApiary} text="CREAR APIARIO" />
       </View>
     )
   }

@@ -1,8 +1,6 @@
 import t from 'tcomb-form-native';
 
 const DEFAULT_STYLES = {
-    LIST_CONTAINER_PADDING: 0,
-    SCREEN_CONTAINER_PADDING: 20,
     PRIMARY_COLOR: '#00BCD4',
     PRIMARY_COLOR_LIGHT: '#26C6DA',
     PRIMARY_COLOR_LIGHTER: '#4DD0E1',
@@ -25,7 +23,12 @@ const DEFAULT_STYLES = {
     LABEL_MARGIN_BOTTOM: 5,
 
     //Titles
-    TITLE_BIG_FONT_SIZE: 24
+    TITLE_BIG_FONT_SIZE: 24,
+
+    //Containers
+    SCREEN_CONTAINER_PADDING: 20,
+    LIST_CONTAINER_PADDING: 0,
+
 };
 
 t.form.Form.stylesheet.controlLabel.normal.color = DEFAULT_STYLES.LABEL_NORMAL_COLOR;
