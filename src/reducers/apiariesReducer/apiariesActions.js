@@ -71,7 +71,7 @@ export const updateApiary = (apiary, success) => async (dispatch) => {
           AsyncStorage.setItem('apiaries', JSON.stringify(apiaries), () => {
             dispatch({
               type: UPDATE_APIARY,
-              data: apiary.newValues
+              data: apiaries
             });
           }).then(success);
         } catch (e) {

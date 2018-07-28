@@ -88,8 +88,8 @@ class ApiaryInfoScreen extends React.Component {
         }
       };
 
-      console.log(apiary);
       this.props.updateApiary(apiary, () => {
+        this.props.navigation.navigate('SingleApiary', {apiary: apiary.newValues});
         this.setState({
           editable: false
         });

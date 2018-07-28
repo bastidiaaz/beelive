@@ -11,14 +11,14 @@ function apiariesReducer(state = initialState, action) {
       };
 
     case "CREATE_APIARY":
-      var apiaries =  cloneObject(state.data)
+      var apiaries =  cloneObject(state.data);
       apiaries.unshift(action.data);
       state = Object.assign({}, state, { data: apiaries});
       return state;
 
     case "UPDATE_APIARY":
-      var apiaries =  cloneObject(state.data)
-      apiaries.unshift(action.data);
+      var apiaries =  action.data;
+      console.log(action.data);
       state = Object.assign({}, state, { data: apiaries});
       return state;
 
