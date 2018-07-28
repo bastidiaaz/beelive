@@ -68,6 +68,17 @@ export const updateApiary = (apiary, success) => async (dispatch) => {
         try {
           _.remove(apiaries, ['name', prevApiary.name]);
           apiaries.unshift(apiary.newValues);
+
+          AsyncStorage.getItem('hives', (err, hives) => {
+            hives = JSON.parse(hives);
+            hives.map((hive, index) => {
+              if (hive.apiary === apiary.prevValues.name) {
+                hive.apiary = apiary.newValues.name;
+              }
+            });
+            AsyncStorage.setItem('hives', JSON.stringify(hives));
+          });
+
           AsyncStorage.setItem('apiaries', JSON.stringify(apiaries), () => {
             dispatch({
               type: UPDATE_APIARY,
