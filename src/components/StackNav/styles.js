@@ -14,6 +14,11 @@ var styles = StyleSheet.create({
     backgroundColor: DEFAULTS.PRIMARY_COLOR,
     elevation: 0
   },
+  headerIcon: {
+    color: '#FFF',
+    fontSize: 20,
+    width: 25
+  },
   title: {
     fontWeight: 'bold',
     fontSize: 18,

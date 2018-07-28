@@ -31,7 +31,9 @@ var tabRoutes = {
     screen: mapNavigationStateParamsToProps(ApiaryInfoScreen),
     navigationOptions: ({ navigation }) => ({
       title: "Info"
-    })
+    }),
+    onTransitionEnd: ({ navigation }) => {
+    }
   }
 };
 

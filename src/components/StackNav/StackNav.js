@@ -4,12 +4,15 @@ import {
   Text,
   View
 } from 'react-native';
+
 import PropTypes from 'prop-types';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import { addListener } from '../../utils/redux';
 import { addNavigationHelpers } from 'react-navigation';
 import { mapNavigationStateParamsToProps } from '../../utils/helpers.js';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import DropdownMenu from '../DropdownMenu/DropdownMenu';
 
 import MainScreen from '../../screens/MainScreen/MainScreen';
 
@@ -42,7 +45,8 @@ var stackRoutes = {
     screen: SingleApiaryScreen,
     navigationOptions: ({ navigation }) => ({
       title: navigation.getParam('apiary', null).name,
-      headerStyle: styles.headerCombined
+      headerStyle: styles.headerCombined,
+      headerRight: <DropdownMenu items={[{label: 'Editar Apiario', onPress: () => { navigation.navigate('Info', {edit: true}) }}]}/>
     })
   },
   CreateHive: {
@@ -56,11 +60,6 @@ var stackRoutes = {
 export const StackNavElement = StackNavigator(stackRoutes, options);
 
 class StackNav extends React.Component {
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    nav: PropTypes.object.isRequired,
-  };
-
   render() {
     const { dispatch, nav } = this.props;
     return (
