@@ -16,6 +16,12 @@ function apiariesReducer(state = initialState, action) {
       state = Object.assign({}, state, { data: apiaries});
       return state;
 
+    case "UPDATE_APIARY":
+      var apiaries =  cloneObject(state.data)
+      apiaries.unshift(action.data);
+      state = Object.assign({}, state, { data: apiaries});
+      return state;
+
     default:
       return {
         ...state

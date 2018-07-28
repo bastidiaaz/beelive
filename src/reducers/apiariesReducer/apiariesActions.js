@@ -55,3 +55,34 @@ export const createApiary = (newApiary, success) => async (dispatch) => {
     console.log('Error setting a new item');
   }
 };
+
+export const updateApiary = (apiary, success) => async (dispatch) => {
+  // AsyncStorage.clear();
+  try {
+    await AsyncStorage.getItem('apiaries', (err, apiaries) => {
+      apiaries = JSON.parse(apiaries);
+
+      var prevApiary = _.find(apiaries, ['name', apiary.prevValues.name]);
+      var isDuplicated = !_.isUndefined(_.find(apiaries, ['name', apiary.newValues.name])) && apiary.newValues.name !== apiary.prevValues.name;
+      if (prevApiary && !isDuplicated) {
+        try {
+          _.remove(apiaries, ['name', prevApiary.name]);
+          apiaries.unshift(apiary.newValues);
+          AsyncStorage.setItem('apiaries', JSON.stringify(apiaries), () => {
+            dispatch({
+              type: UPDATE_APIARY,
+              data: apiary.newValues
+            });
+          }).then(success);
+        } catch (e) {
+          console.log('Error setting a new item');
+        }
+      } else {
+        ToastAndroid.show('Ya existe un apiario con este nombre', ToastAndroid.SHORT);
+        console.log('Duplicated Apiary');
+      }
+    });
+  } catch (e) {
+    console.log('Error setting a new item');
+  }
+};
