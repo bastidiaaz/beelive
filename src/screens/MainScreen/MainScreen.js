@@ -2,6 +2,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { TabNavigator } from 'react-navigation';
 import ApiariesScreen from '../../screens/ApiariesScreen/ApiariesScreen';
+import ReportsScreen from '../../screens/ReportsScreen/ReportsScreen';
 import styles from './styles';
 
 var options = {
@@ -27,6 +28,13 @@ var tabRoutes = {
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: () => <Icon name="forumbee" style={styles.icon}/>,
       title: "Apiarios"
+    })
+  },
+  Reports: {
+    screen: ReportsScreen,
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: () => <Icon name="forumbee" style={styles.icon}/>,
+      title: "Reportes"
     })
   }
 };
