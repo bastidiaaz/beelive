@@ -16,6 +16,11 @@ function hivesReducer(state = initialState, action) {
       state = Object.assign({}, state, { data: hives});
       return state;
 
+    case "UPDATE_HIVE":
+      var hives =  action.data;
+      state = Object.assign({}, state, { data: hives});
+      return state;
+
     default:
       return {
         ...state

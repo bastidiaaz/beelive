@@ -21,6 +21,7 @@ import { deleteApiary } from '../../reducers/apiariesReducer/apiariesActions';
 import CreateApiaryScreen from '../../screens/CreateApiaryScreen/CreateApiaryScreen';
 import SingleApiaryScreen from '../../screens/SingleApiaryScreen/SingleApiaryScreen';
 import CreateHiveScreen from '../../screens/CreateHiveScreen/CreateHiveScreen';
+import EditHiveScreen from '../../screens/EditHiveScreen/EditHiveScreen';
 
 import styles from './styles';
 import DEFAULTS from '../../utils/constants';
@@ -55,6 +56,13 @@ var stackRoutes = {
     screen: mapNavigationStateParamsToProps(CreateHiveScreen),
     navigationOptions: ({ navigation }) => ({
       title: "Nueva Colmena"
+    })
+  },
+  EditHive: {
+    screen: mapNavigationStateParamsToProps(EditHiveScreen),
+    navigationOptions: ({ navigation }) => ({
+      title: navigation.getParam('hive', null).name,
+      headerRight: <DropdownMenu items={[{label: 'Eliminar Colmena'}]}/>
     })
   },
 };

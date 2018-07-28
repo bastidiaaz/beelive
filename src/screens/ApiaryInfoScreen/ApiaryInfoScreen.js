@@ -125,7 +125,7 @@ class ApiaryInfoScreen extends React.Component {
       </View>
     </View>;
 
-    const displayNoEdit = <Button onPress={this.toggleEdit} text="EDITAR APIARIO" />;
+    const displayNoEdit = <Button onPress={this.toggleEdit} text="ACTUALIZAR APIARIO" />;
     const isEditable = this.state.editable;
 
     return(

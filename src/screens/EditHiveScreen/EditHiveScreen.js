@@ -6,7 +6,7 @@ import {
   View
 } from 'react-native';
 import t from 'tcomb-form-native';
-import { createHive } from '../../reducers/hivesReducer/hivesActions';
+import { updateHive } from '../../reducers/hivesReducer/hivesActions';
 import { connect } from 'react-redux';
 import Button from '../../components/Button/Button';
 import styles from './styles';
@@ -29,12 +29,16 @@ const formOptions = {
   }
 }
 
-class CreateHiveScreen extends React.Component {
+class EditHiveScreen extends React.Component {
   constructor(props) {
     super(props);
 
+    console.log(this.props);
     this.state = {
-      formValue: null
+      formValue: {
+        name: this.props.hive.name,
+        description: this.props.hive.description
+      }
     };
     console.log(this.props.navigation);
   };
@@ -45,21 +49,26 @@ class CreateHiveScreen extends React.Component {
     });
   };
 
-  createHive = () => {
-    var newHiveForm = this.refs.newHive;
-    var formIsValid = !newHiveForm.validate().errors.length > 0;
+  updateHive = () => {
+    var hiveForm = this.refs.hive;
+    var formIsValid = !hiveForm.validate().errors.length > 0;
 
     if (formIsValid) {
-      var newHiveValues = newHiveForm.getValue();
-      var newHive = {
-        name: newHiveValues.name,
-        description: newHiveValues.description,
-        apiary: this.props.navigation.getParam('apiary').name
+      var hiveValues = hiveForm.getValue();
+      var hive = {
+        prevValues: {
+          ...this.props.hive
+        },
+        newValues: {
+          name: hiveValues.name,
+          description: hiveValues.description,
+          apiary: this.props.hive.apiary
+        }
       };
 
-      this.props.createHive(newHive.apiary, newHive, () => {
+      this.props.updateHive(hive, () => {
         this.props.navigation.goBack();
-        ToastAndroid.show('Colmena creada', ToastAndroid.SHORT);
+        ToastAndroid.show('Colmena Actualizada', ToastAndroid.SHORT);
       });
     } else {
       ToastAndroid.show('Debe llenar los campos obligatorios', ToastAndroid.SHORT);
@@ -72,9 +81,9 @@ class CreateHiveScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.formContainer}>
           <View>
-            <Form value={this.state.formValue} onChange={this.onFormChange} ref="newHive" type={Hive} options={formOptions}/>
+            <Form value={this.state.formValue} onChange={this.onFormChange} ref="hive" type={Hive} options={formOptions}/>
           </View>
-          <Button onPress={this.createHive} text="CREAR COLMENA" />
+          <Button onPress={this.updateHive} text="ACTUALIZAR COLMENA" />
         </ScrollView>
       </View>
     )
@@ -85,4 +94,4 @@ const mapStateToProps = state => ({
   hives: state.hives
 });
 
-export default connect(mapStateToProps, { createHive })(CreateHiveScreen);
+export default connect(mapStateToProps, { updateHive })(EditHiveScreen);

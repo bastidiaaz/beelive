@@ -11,10 +11,14 @@ class ApiaryHivesScreen extends React.Component {
     this.props.getHives(this.props.apiary.name);
   };
 
+  _onPressItem = (item) => {
+    this.props.navigation.navigate('EditHive', {hive: item});
+  };
+
   render() {
     return(
       <View style={styles.container}>
-        <List data={this.props.hives.data}/>
+        <List data={this.props.hives.data} onPressItem={this._onPressItem}/>
         <FabButton onPress={() => { this.props.navigation.navigate('CreateHive', {apiary: this.props.apiary}) }}/>
       </View>
     )
