@@ -16,6 +16,8 @@ import DropdownMenu from '../DropdownMenu/DropdownMenu';
 
 import MainScreen from '../../screens/MainScreen/MainScreen';
 
+import { deleteApiary } from '../../reducers/apiariesReducer/apiariesActions';
+
 import CreateApiaryScreen from '../../screens/CreateApiaryScreen/CreateApiaryScreen';
 import SingleApiaryScreen from '../../screens/SingleApiaryScreen/SingleApiaryScreen';
 import CreateHiveScreen from '../../screens/CreateHiveScreen/CreateHiveScreen';
@@ -46,7 +48,7 @@ var stackRoutes = {
     navigationOptions: ({ navigation }) => ({
       title: navigation.getParam('apiary', null).name,
       headerStyle: styles.headerCombined,
-      headerRight: <DropdownMenu items={[{label: 'Editar Apiario', onPress: () => { navigation.navigate('Info', {edit: true}) }}]}/>
+      headerRight: <DropdownMenu items={[{label: 'Eliminar Apiario', onPress: () => {deleteApiary(navigation.state.params.apiary); }}]}/>
     })
   },
   CreateHive: {

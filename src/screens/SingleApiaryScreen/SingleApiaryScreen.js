@@ -1,6 +1,7 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
 import { mapNavigationStateParamsToProps } from '../../utils/helpers.js';
+import { deleteApiary } from '../../reducers/apiariesReducer/apiariesActions';
 import ApiaryHivesScreen from '../../screens/ApiaryHivesScreen/ApiaryHivesScreen';
 import ApiaryInfoScreen from '../../screens/ApiaryInfoScreen/ApiaryInfoScreen';
 import styles from './styles';

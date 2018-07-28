@@ -18,7 +18,11 @@ function apiariesReducer(state = initialState, action) {
 
     case "UPDATE_APIARY":
       var apiaries =  action.data;
-      console.log(action.data);
+      state = Object.assign({}, state, { data: apiaries});
+      return state;
+
+    case "DELETE_APIARY":
+      var apiaries =  action.data;
       state = Object.assign({}, state, { data: apiaries});
       return state;
 

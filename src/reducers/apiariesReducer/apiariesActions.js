@@ -97,3 +97,24 @@ export const updateApiary = (apiary, success) => async (dispatch) => {
     console.log('Error setting a new item');
   }
 };
+
+export const deleteApiary = (apiary) => (dispatch) => {
+  console.log(apiary);
+  console.log('asdafadsfd');
+  try {
+    AsyncStorage.getItem('apiaries', (err, apiaries) => {
+      apiaries = JSON.parse(apiaries)
+      _.remove(apiaries, ['name', apiary.name]);
+      console.log(apiaries);
+
+      AsyncStorage.setItem('apiaries', JSON.stringify(apiaries), () => {
+        dispatch({
+          type: DELETE_APIARY,
+          data: apiaries
+        });
+      }).then(success);
+    });
+  } catch (e) {
+    console.log('Error deleting');
+  }
+};
