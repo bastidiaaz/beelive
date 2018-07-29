@@ -9,10 +9,6 @@ import _ from 'lodash';
 import { AsyncStorage, ToastAndroid } from "react-native";
 
 export const getHives = (key) => async (dispatch) => {
-  dispatch({
-    type: GET_HIVES,
-    data: 'asd'
-  });
   try {
     await AsyncStorage.getItem('hives', async (err, hives) => {
       if (hives !== null) {
@@ -22,11 +18,10 @@ export const getHives = (key) => async (dispatch) => {
         hives = [];
         await AsyncStorage.setItem('hives', JSON.stringify(hives));
       }
-
       dispatch({
         type: GET_HIVES,
         data: apiaryHives
-      })
+      });
     });
   } catch (e) {
     console.log('Error fetching');
@@ -42,6 +37,7 @@ export const createHive = (key, newHive, success) => async (dispatch) => {
 
       var isDuplicated = !_.isUndefined(_.find(apiaryHives, ['name', newHive.name]));
       if (!isDuplicated) {
+        newHive.totalReports = 0;
         hives.unshift(newHive);
         try {
           AsyncStorage.setItem('hives', JSON.stringify(hives), () => {
