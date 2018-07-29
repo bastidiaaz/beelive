@@ -7,7 +7,7 @@ import ApiaryInfoScreen from '../../screens/ApiaryInfoScreen/ApiaryInfoScreen';
 import styles from './styles';
 
 var options = {
-  initialRouteName: 'Hives',
+  initialRouteName: 'Info',
   animationEnabled: true,
   swipeEnabled: true,
   lazy: false,
@@ -22,12 +22,6 @@ var options = {
 };
 
 var tabRoutes = {
-  Hives: {
-    screen: mapNavigationStateParamsToProps(ApiaryHivesScreen),
-    navigationOptions: ({ navigation }) => ({
-      title: "Colmenas"
-    })
-  },
   Info: {
     screen: mapNavigationStateParamsToProps(ApiaryInfoScreen),
     navigationOptions: ({ navigation }) => ({
@@ -35,6 +29,12 @@ var tabRoutes = {
     }),
     onTransitionEnd: ({ navigation }) => {
     }
+  },
+  Hives: {
+    screen: mapNavigationStateParamsToProps(ApiaryHivesScreen),
+    navigationOptions: ({ navigation }) => ({
+      title: "Colmenas"
+    })
   }
 };
 
