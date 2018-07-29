@@ -23,6 +23,8 @@ import SingleApiaryScreen from '../../screens/SingleApiaryScreen/SingleApiaryScr
 import CreateHiveScreen from '../../screens/CreateHiveScreen/CreateHiveScreen';
 import EditHiveScreen from '../../screens/EditHiveScreen/EditHiveScreen';
 
+import NewReportScreen from '../../screens/NewReportScreen/NewReportScreen';
+
 import styles from './styles';
 import DEFAULTS from '../../utils/constants';
 
@@ -61,8 +63,14 @@ var stackRoutes = {
   EditHive: {
     screen: mapNavigationStateParamsToProps(EditHiveScreen),
     navigationOptions: ({ navigation }) => ({
-      title: navigation.getParam('hive', null).name,
+      title: navigation.getParam('hive', null).apiary + ' - ' + navigation.getParam('hive', null).name,
       headerRight: <DropdownMenu items={[{label: 'Eliminar Colmena'}]}/>
+    })
+  },
+  NewReport: {
+    screen: mapNavigationStateParamsToProps(NewReportScreen),
+    navigationOptions: ({ navigation }) => ({
+      title: 'Reporte: ' + navigation.getParam('apiary', null).name + ' - ' + navigation.getParam('hive', null).name
     })
   },
 };
