@@ -8,17 +8,36 @@ var styles = StyleSheet.create({
     padding: DEFAULTS.SCREEN_CONTAINER_PADDING,
     flex: 1
   },
-  dropdownContainer: {
-
+  sectionContainer: {
+    paddingBottom: DEFAULTS.SCREEN_SECCION_CONTAINER_PADDING,
   },
   label: {
     color: DEFAULTS.PRIMARY_COLOR_DARKEST,
     fontSize: DEFAULTS.LABEL_FONT_SIZE,
     fontWeight: DEFAULTS.LABEL_FONT_WEIGHT,
-    marginBottom: DEFAULTS.LABEL_MARGIN_BOTTOM
+    marginBottom: DEFAULTS.LABEL_MARGIN_BOTTOM,
+    textAlignVertical: 'center'
+  },
+  text: {
+    color: DEFAULTS.PRIMARY_TEXT_COLOR,
+    fontSize: DEFAULTS.LABEL_FONT_SIZE,
+    marginBottom: DEFAULTS.LABEL_MARGIN_BOTTOM,
+    textAlignVertical: 'center'
   },
   picker: {
-    flex: 1
+    flex: 1,
+    borderColor: 'red',
+    borderWidth: 1
+  },
+  inlineContainer: {
+    flexWrap: 'wrap',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  buttonContainer: {
+    flex: 1,
+    justifyContent: 'flex-end'
   }
 });
 

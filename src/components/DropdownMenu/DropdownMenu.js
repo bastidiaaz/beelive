@@ -25,6 +25,7 @@ class DropdownMenu extends React.Component {
   };
 
   render() {
+    console.log(this.props.items[0].onPress);
     return (
       <Menu ref={this.setMenuRef} button={<TouchableOpacity style={styles.headerButton} onPress={this.showMenu}><Icon style={styles.headerIcon} name={'ellipsis-v'}/></TouchableOpacity>}>
         {
