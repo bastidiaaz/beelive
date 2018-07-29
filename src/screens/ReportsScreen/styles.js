@@ -24,6 +24,17 @@ var styles = StyleSheet.create({
     marginBottom: DEFAULTS.LABEL_MARGIN_BOTTOM,
     textAlignVertical: 'center'
   },
+  textMuted: {
+    color: DEFAULTS.SECONDARY_TEXT_COLOR,
+    fontSize: DEFAULTS.LABEL_FONT_SIZE,
+    marginBottom: DEFAULTS.LABEL_MARGIN_BOTTOM,
+    textAlignVertical: 'center',
+    textAlign: 'center'
+  },
+  textMutedContainer: {
+    flex: 1,
+    justifyContent: 'center'
+  },
   picker: {
     flex: 1,
     borderColor: 'red',

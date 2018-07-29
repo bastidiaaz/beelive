@@ -31,6 +31,12 @@ class ReportsScreen extends React.Component {
         this.setState({
           selectedHive: this.props.hives.data[0],
         });
+
+        // this.props.getHives(this.state.selectedApiary.name).then(() => {
+        //   this.setState({
+        //     selectedHive: this.props.hives.data[0],
+        //   });
+        // });
       });
     });
   };
@@ -69,30 +75,42 @@ class ReportsScreen extends React.Component {
             }
           </Picker>
         </View>
-        <View style={styles.sectionContainer}>
-          <Text style={styles.label}>Seleccione la colmena a inspeccionar</Text>
-          <Picker
-            selectedValue={this.state.selectedHive}
-            style={styles.picker, {height: 50}}
-            onValueChange={this.onHiveChange}>
-            {
-              this.props.hives.data.map((hive, key) => {
-                return <Picker.Item key={hive.apiary + hive.name} label={hive.name} value={hive} />
-              })
-            }
-          </Picker>
-        </View>
-        <View style={styles.sectionContainer, {height: 35}}>
-          <View style={styles.inlineContainer}>
-            <Text style={styles.text}>Esta colmena tiene 6 reportes</Text>
-            <Button color={DEFAULTS.PRIMARY_COLOR_DARK} title="Ver Reportes" onPress={() => {console.log('holas');}}/>
+        { this.props.hives.data.length > 0 ? (
+          <View style={{flex: 1}}>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.label}>Seleccione la colmena a inspeccionar</Text>
+              <Picker
+                selectedValue={this.state.selectedHive}
+                style={styles.picker, {height: 50}}
+                onValueChange={this.onHiveChange}>
+                {
+                  this.props.hives.data.map((hive, key) => {
+                    return <Picker.Item key={hive.apiary + hive.name} label={hive.name} value={hive} />
+                  })
+                }
+              </Picker>
+            </View>
+            <View style={styles.sectionContainer, {height: 35}}>
+              <View style={styles.inlineContainer}>
+                { this.state.selectedHive && this.state.selectedHive.totalReports > 0 ? (
+                  <Text style={styles.text}>Esta colmena tiene {this.state.selectedHive.totalReports} reportes</Text>
+                ) : (
+                  <Text style={styles.text}>Esta colmena aun no tiene reportes</Text>
+                )}
+                <Button disabled={(this.state.selectedHive && this.state.selectedHive.totalReports == 0)} color={DEFAULTS.PRIMARY_COLOR_DARK} title="Ver Reportes" onPress={() => {console.log('holas');}}/>
+              </View>
+            </View>
+            <View style={styles.buttonContainer}>
+              <View style={{height: 35}}>
+                <Button color={DEFAULTS.SECONDARY_COLOR} title="Iniciar un Nuevo Reporte" onPress={() => {this.props.navigation.navigate('NewReport', {apiary: this.state.selectedApiary, hive: this.state.selectedHive})}}/>
+              </View>
+            </View>
           </View>
-        </View>
-        <View style={styles.buttonContainer}>
-          <View style={{height: 35}}>
-            <Button color={DEFAULTS.SECONDARY_COLOR} title="Iniciar un Nuevo Reporte" onPress={() => {console.log('holas');}}/>
+        ) : (
+          <View style={styles.textMutedContainer}>
+            <Text style={styles.textMuted}>El apiario seleccionado no tiene ninguna colmena. Cree una nueva colmena e intentelo nuevamente</Text>
           </View>
-        </View>
+        )}
       </View>
     )
   }
