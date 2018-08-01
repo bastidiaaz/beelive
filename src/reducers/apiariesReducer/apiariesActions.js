@@ -6,8 +6,10 @@ import {
 } from '../types';
 import _ from 'lodash';
 import { AsyncStorage, ToastAndroid } from "react-native";
+import { getHives } from '../hivesReducer/hivesActions';
 
 export const getApiaries = () => async (dispatch) => {
+  // AsyncStorage.clear();
   try {
     await AsyncStorage.getItem('apiaries', async (err, apiaries) => {
       if (apiaries !== null) {
@@ -28,7 +30,6 @@ export const getApiaries = () => async (dispatch) => {
 };
 
 export const createApiary = (newApiary, success) => async (dispatch) => {
-  // AsyncStorage.clear();
   try {
     await AsyncStorage.getItem('apiaries', (err, apiaries) => {
       apiaries = JSON.parse(apiaries);
@@ -70,12 +71,17 @@ export const updateApiary = (apiary, success) => async (dispatch) => {
           apiaries.unshift(apiary.newValues);
 
           AsyncStorage.getItem('hives', (err, hives) => {
-            hives = JSON.parse(hives);
-            hives.map((hive, index) => {
-              if (hive.apiary === apiary.prevValues.name) {
-                hive.apiary = apiary.newValues.name;
-              }
-            });
+            if (hives !== null) {
+              hives = JSON.parse(hives);
+              hives.map((hive, index) => {
+                if (hive.apiary === apiary.prevValues.name) {
+                  hive.apiary = apiary.newValues.name;
+                }
+              });
+            } else {
+              hives = [];
+            }
+
             AsyncStorage.setItem('hives', JSON.stringify(hives));
           });
 

@@ -16,6 +16,7 @@ export const getHives = (key) => async (dispatch) => {
         var apiaryHives = _.filter(hives, ['apiary', key]);
       } else {
         hives = [];
+        var apiaryHives = [];
         await AsyncStorage.setItem('hives', JSON.stringify(hives));
       }
       dispatch({
