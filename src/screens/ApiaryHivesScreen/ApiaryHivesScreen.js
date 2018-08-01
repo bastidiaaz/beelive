@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import List from '../../components/List/List';
 import FabButton from '../../components/FabButton/FabButton';
 import { getHives } from '../../reducers/hivesReducer/hivesActions';
@@ -18,7 +18,13 @@ class ApiaryHivesScreen extends React.Component {
   render() {
     return(
       <View style={styles.container}>
-        <List data={this.props.hives.data} onPressItem={this._onPressItem}/>
+        { this.props.hives.data.length > 0 ? (
+          <List data={this.props.hives.data} onPressItem={this._onPressItem}/>
+        ) : (
+          <View style={styles.textMutedContainer}>
+            <Text style={styles.textMuted}>Presione el botón "+" para crear una colmena</Text>
+          </View>
+        )}
         <FabButton onPress={() => { this.props.navigation.navigate('CreateHive', {apiary: this.props.apiary}) }}/>
       </View>
     )

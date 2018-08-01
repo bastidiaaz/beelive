@@ -23,7 +23,19 @@ var styles = StyleSheet.create({
   itemIcon: {
     fontSize: 20,
     marginRight: 40
-  }
+  },
+  textMuted: {
+    color: DEFAULTS.SECONDARY_TEXT_COLOR,
+    fontSize: DEFAULTS.LABEL_FONT_SIZE,
+    marginBottom: DEFAULTS.LABEL_MARGIN_BOTTOM,
+    textAlignVertical: 'center',
+    textAlign: 'center'
+  },
+  textMutedContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: DEFAULTS.SCREEN_CONTAINER_PADDING
+  },
 });
 
 export default styles;

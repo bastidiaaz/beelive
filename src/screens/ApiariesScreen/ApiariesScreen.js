@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { getApiaries } from '../../reducers/apiariesReducer/apiariesActions';
 import styles from './styles';
@@ -19,7 +19,13 @@ class ApiariesScreen extends React.Component {
   render() {
     return(
       <View style={styles.container}>
-        <List data={this.props.apiaries.data} onPressItem={this._onPressItem}/>
+        { this.props.apiaries.data.length > 0 ? (
+          <List data={this.props.apiaries.data} onPressItem={this._onPressItem}/>
+        ) : (
+          <View style={styles.textMutedContainer}>
+            <Text style={styles.textMuted}>Presione el botón "+" para crear su primer apiario</Text>
+          </View>
+        )}
         <FabButton onPress={() => { this.props.navigation.navigate('CreateApiary') }}/>
       </View>
     )
