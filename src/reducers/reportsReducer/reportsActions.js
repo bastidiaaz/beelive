@@ -28,32 +28,38 @@ export const getReports = (hive) => async (dispatch) => {
   }
 };
 
-// export const createHive = (key, newHive, success) => async (dispatch) => {
-//   // AsyncStorage.clear();
-//   try {
-//     await AsyncStorage.getItem('hives', (err, hives) => {
-//       hives = JSON.parse(hives);
-//       var apiaryReports = _.filter(hives, ['apiary', key]);
-//
-//       var isDuplicated = !_.isUndefined(_.find(apiaryReports, ['name', newHive.name]));
-//       if (!isDuplicated) {
-//         hives.unshift(newHive);
-//         try {
-//           AsyncStorage.setItem('hives', JSON.stringify(hives), () => {
-//             dispatch({
-//               type: CREATE_REPORT,
-//               data: newHive
-//             });
-//           }).then(success);
-//         } catch (e) {
-//           console.log('Error setting a new item');
-//         }
-//       } else {
-//         ToastAndroid.show('Ya existe una colmena con este nombre en este apiario', ToastAndroid.SHORT);
-//         console.log('Duplicated Apiary');
-//       }
-//     });
-//   } catch (e) {
-//     console.log('Error setting a new item');
-//   }
-// };
+export const createReport = (hive, newReport, success) => async (dispatch) => {
+  // AsyncStorage.clear();
+  try {
+    await AsyncStorage.getItem('reports', (err, reports) => {
+      if (reports !== null) {
+        reports = JSON.parse(reports);
+      } else {
+        reports = [];
+        AsyncStorage.setItem('reports', JSON.stringify(reports));
+      }
+
+      newReport.hive = hive.name;
+      newReport.apiary - hive.apiary;
+      reports.unshift(newReport);
+      try {
+        AsyncStorage.setItem('reports', JSON.stringify(reports)).then(() => {
+          AsyncStorage.getItem('hives', async (err, hives) => {
+            hives = JSON.parse(hives);
+            _.find(hives, ['apiary', hive.apiary], ['name', hive.name]).totalReports++;
+            AsyncStorage.setItem('hives', JSON.stringify(hives), () => {
+              dispatch({
+                type: CREATE_REPORT,
+                data: reports
+              });
+            }).then(success);
+          });
+        });
+      } catch (e) {
+        console.log('Error creating a new report');
+      }
+    });
+  } catch (e) {
+    console.log('Error creating a new report');
+  }
+};
