@@ -6,7 +6,7 @@ var styles = StyleSheet.create({
   tab: {
     backgroundColor: DEFAULTS.PRIMARY_COLOR,
     borderTopColor: DEFAULTS.DIVIDER_COLOR,
-    borderTopWidth: 1
+    borderTopWidth: 1,
   },
   tabIndicator: {
     backgroundColor: DEFAULTS.SECONDARY_COLOR,
@@ -15,6 +15,11 @@ var styles = StyleSheet.create({
   icon: {
     fontSize: 22,
     color: '#FFF'
+  },
+  imageIcon: {
+    marginTop: 4,
+    height: 30,
+    width: 30
   }
 });
 
