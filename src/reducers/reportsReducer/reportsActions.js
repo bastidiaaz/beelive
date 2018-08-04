@@ -16,6 +16,7 @@ export const getReports = (hive) => async (dispatch) => {
         var hiveReports = _.filter(reports, ['apiary', hive.apiary], ['hive', hive.name]);
       } else {
         reports = [];
+        var hiveReports = [];
         await AsyncStorage.setItem('reports', JSON.stringify(reports));
       }
       dispatch({
@@ -40,7 +41,7 @@ export const createReport = (hive, newReport, success) => async (dispatch) => {
       }
 
       newReport.hive = hive.name;
-      newReport.apiary - hive.apiary;
+      newReport.apiary = hive.apiary;
       reports.unshift(newReport);
       try {
         AsyncStorage.setItem('reports', JSON.stringify(reports)).then(() => {

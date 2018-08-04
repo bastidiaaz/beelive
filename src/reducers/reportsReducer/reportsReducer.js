@@ -10,11 +10,10 @@ function reportsReducer(state = initialState, action) {
         data: action.data
       };
 
-    // case "CREATE_HIVE":
-    //   var reports =  cloneObject(state.data)
-    //   reports.unshift(action.data);
-    //   state = Object.assign({}, state, { data: reports});
-    //   return state;
+    default:
+      return {
+        ...state
+      }
   }
 }
 
