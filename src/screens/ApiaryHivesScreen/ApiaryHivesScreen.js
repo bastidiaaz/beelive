@@ -19,7 +19,7 @@ class ApiaryHivesScreen extends React.Component {
     return(
       <View style={styles.container}>
         { this.props.hives.data.length > 0 ? (
-          <List data={this.props.hives.data} onPressItem={this._onPressItem}/>
+          <List data={this.props.hives.data} titleKey={{key: 'name'}} subtitleKey={{key: 'description'}} onPressItem={this._onPressItem}/>
         ) : (
           <View style={styles.textMutedContainer}>
             <Text style={styles.textMuted}>Presione el botón "+" para crear una colmena</Text>

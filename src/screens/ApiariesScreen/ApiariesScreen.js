@@ -20,7 +20,7 @@ class ApiariesScreen extends React.Component {
     return(
       <View style={styles.container}>
         { this.props.apiaries.data.length > 0 ? (
-          <List data={this.props.apiaries.data} onPressItem={this._onPressItem}/>
+          <List data={this.props.apiaries.data} titleKey={{key: 'name'}} subtitleKey={{key: 'description'}} onPressItem={this._onPressItem}/>
         ) : (
           <View style={styles.textMutedContainer}>
             <Text style={styles.textMuted}>Presione el botón "+" para crear su primer apiario</Text>

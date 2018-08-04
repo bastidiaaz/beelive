@@ -2,6 +2,8 @@ import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import _ from 'lodash';
+import moment from 'moment';
 
 import styles from './styles';
 
@@ -10,14 +12,31 @@ class List extends React.Component {
     super(props);
   }
 
-  _renderItem = ({item}) => (
-    <ListItem
-      leftIcon={<View style={styles.iconContainer}><Icon style={styles.icon} name="forumbee"/></View>}
-      onPress={() => this.props.onPressItem(item)}
-      title={item.name}
-      subtitle={item.description}
-    />
-  )
+  _renderItem = ({item}) => {
+    var title = this.props.titleKey;
+    var subtitle = this.props.subtitleKey;
+
+    if (!_.isUndefined(this.props.titleKey.format)) {
+      title = moment(item[this.props.titleKey.key]).format(this.props.titleKey.format);
+    } else {
+      title = item[this.props.titleKey.key];
+    }
+
+    if (!_.isUndefined(this.props.subtitleKey.format)) {
+      subtitle = moment(item[this.props.subtitleKey.key]).format(this.props.subtitleKey.format);
+    } else {
+      subtitle = item[this.props.subtitleKey.key];
+    }
+
+    return (
+      <ListItem
+        leftIcon={<View style={styles.iconContainer}><Icon style={styles.icon} name="forumbee"/></View>}
+        onPress={() => this.props.onPressItem(item)}
+        title={title}
+        subtitle={subtitle}
+      />
+    );
+  }
 
   render() {
     return (
