@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import { addListener } from '../../utils/redux';
+import moment from 'moment';
 import { addNavigationHelpers } from 'react-navigation';
 import { mapNavigationStateParamsToProps } from '../../utils/helpers.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -25,6 +26,7 @@ import EditHiveScreen from '../../screens/EditHiveScreen/EditHiveScreen';
 
 import NewReportScreen from '../../screens/NewReportScreen/NewReportScreen';
 import HiveReportsScreen from '../../screens/HiveReportsScreen/HiveReportsScreen';
+import EditReportScreen from '../../screens/EditReportScreen/EditReportScreen';
 
 import styles from './styles';
 import DEFAULTS from '../../utils/constants';
@@ -77,7 +79,13 @@ var stackRoutes = {
   HiveReports: {
     screen: mapNavigationStateParamsToProps(HiveReportsScreen),
     navigationOptions: ({ navigation }) => ({
-      title: 'Reportes: ' + navigation.getParam('hive', null).name
+      title: 'Reportes: ' + navigation.getParam('hive', null).apiary + ' - ' + navigation.getParam('hive', null).name
+    })
+  },
+  EditReport: {
+    screen: mapNavigationStateParamsToProps(EditReportScreen),
+    navigationOptions: ({ navigation }) => ({
+      title: navigation.getParam('report', null).apiary + ' - ' + navigation.getParam('report', null).hive + ' - ' + moment(navigation.getParam('report', null).dateTime).format('DD/MM/YYYY HH:mm')
     })
   },
 };

@@ -12,7 +12,7 @@ class HiveReportsScreen extends React.Component {
   };
 
   _onPressItem = (item) => {
-    this.props.navigation.navigate('SingleHiveReport', {report: item});
+    this.props.navigation.navigate('EditReport', {report: item});
   };
 
   render() {

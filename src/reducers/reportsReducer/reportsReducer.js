@@ -10,6 +10,12 @@ function reportsReducer(state = initialState, action) {
         data: action.data
       };
 
+    case "UPDATE_REPORT":
+      return {
+        ...state,
+        data: action.data
+      };
+
     default:
       return {
         ...state
