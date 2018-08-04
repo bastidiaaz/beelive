@@ -24,6 +24,7 @@ import CreateHiveScreen from '../../screens/CreateHiveScreen/CreateHiveScreen';
 import EditHiveScreen from '../../screens/EditHiveScreen/EditHiveScreen';
 
 import NewReportScreen from '../../screens/NewReportScreen/NewReportScreen';
+import HiveReportsScreen from '../../screens/HiveReportsScreen/HiveReportsScreen';
 
 import styles from './styles';
 import DEFAULTS from '../../utils/constants';
@@ -71,6 +72,12 @@ var stackRoutes = {
     screen: mapNavigationStateParamsToProps(NewReportScreen),
     navigationOptions: ({ navigation }) => ({
       title: 'Reporte: ' + navigation.getParam('apiary', null).name + ' - ' + navigation.getParam('hive', null).name
+    })
+  },
+  HiveReports: {
+    screen: mapNavigationStateParamsToProps(HiveReportsScreen),
+    navigationOptions: ({ navigation }) => ({
+      title: 'Reportes: ' + navigation.getParam('hive', null).name
     })
   },
 };

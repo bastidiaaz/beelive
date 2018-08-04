@@ -19,8 +19,6 @@ class ReportsScreen extends React.Component {
       selectedApiary: this.props.apiaries.data[0],
       selectedHive: this.props.hives.data[0]
     };
-
-    console.log(this.state);
   };
 
   componentDidMount = () => {
@@ -99,7 +97,7 @@ class ReportsScreen extends React.Component {
             ) : (
               <Text style={styles.text}>Esta colmena no tiene reportes</Text>
             )}
-            <Button disabled={(this.state.selectedHive && this.state.selectedHive.totalReports == 0)} color={DEFAULTS.PRIMARY_COLOR_DARK} title="Ver Reportes" onPress={() => {}}/>
+            <Button disabled={(this.state.selectedHive && this.state.selectedHive.totalReports == 0)} color={DEFAULTS.PRIMARY_COLOR_DARK} title="Ver Reportes" onPress={() => {this.props.navigation.navigate('HiveReports', {hive: this.state.selectedHive})}}/>
           </View>
         </View>
         <View style={styles.buttonContainer}>
