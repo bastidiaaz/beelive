@@ -1,14 +1,15 @@
 import React from 'react';
 import {
+  Button,
   ScrollView,
   Text,
   ToastAndroid,
   View
 } from 'react-native';
 import t from 'tcomb-form-native';
+import DEFAULTS from '../../utils/constants';
 import { createHive } from '../../reducers/hivesReducer/hivesActions';
 import { connect } from 'react-redux';
-import Button from '../../components/Button/Button';
 import styles from './styles';
 
 const Form = t.form.Form;
@@ -74,8 +75,10 @@ class CreateHiveScreen extends React.Component {
           <View>
             <Form value={this.state.formValue} onChange={this.onFormChange} ref="newHive" type={Hive} options={formOptions}/>
           </View>
-          <Button onPress={this.createHive} text="CREAR COLMENA" />
         </ScrollView>
+        <View style={{height: 35}}>
+          <Button color={DEFAULTS.PRIMARY_COLOR_DARK} onPress={this.createHive} title="CREAR COLMENA" />
+        </View>
       </View>
     )
   }

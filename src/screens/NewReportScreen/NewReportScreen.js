@@ -104,7 +104,7 @@ class NewReportScreen extends React.Component {
         </View>
         <View style={styles.buttonContainer}>
           <View style={{height: 35}}>
-            <Button color={DEFAULTS.SECONDARY_COLOR} title="Guardar Reporte" onPress={this.createReport}/>
+            <Button color={DEFAULTS.PRIMARY_COLOR_DARK} title="Crear Reporte" onPress={this.createReport}/>
           </View>
         </View>
       </View>

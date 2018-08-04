@@ -36,6 +36,10 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     padding: DEFAULTS.SCREEN_CONTAINER_PADDING
   },
+  icon: {
+    fontSize: 22,
+    color: '#FFF'
+  },
 });
 
 export default styles;

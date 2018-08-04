@@ -5,11 +5,10 @@ import { StyleSheet } from 'react-native';
 var styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFF',
-    flex: 1
+    flex: 1,
+    padding: DEFAULTS.SCREEN_CONTAINER_PADDING,
   },
   formContainer: {
-    padding: DEFAULTS.SCREEN_CONTAINER_PADDING,
-    marginTop: DEFAULTS.SCREEN_CONTAINER_PADDING,
     paddingTop: 0,
     flex: 1
   },

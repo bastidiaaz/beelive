@@ -136,14 +136,14 @@ class NewReportScreen extends React.Component {
     const displayEdit =
     <View style={{height: 35}}>
       <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
-        <Button color={DEFAULTS.PRIMARY_COLOR_DARK} title="Guardar" onPress={this.updateReport}/>
-        <Button color={'white'} title="Cancelar" onPress={this.toggleEdit}/>
+        <Button color={DEFAULTS.PRIMARY_COLOR_DARK} title="           Guardar          " onPress={this.updateReport}/>
+        <Button color={DEFAULTS.PRIMARY_COLOR_LIGHTEST} title="           Cancelar          " onPress={this.toggleEdit}/>
       </View>
     </View>;
 
     const displayNoEdit =
     <View style={{height: 35}}>
-      <Button color={DEFAULTS.PRIMARY_COLOR_DARK} title="Editar datos" onPress={this.toggleEdit}/>
+      <Button color={DEFAULTS.PRIMARY_COLOR_DARK} title="Editar Informacion" onPress={this.toggleEdit}/>
     </View>
 
     const isEditable = this.state.editable;

@@ -5,7 +5,9 @@ import { StyleSheet } from 'react-native';
 var styles = StyleSheet.create({
   mapContainer: {
     marginBottom: 10,
-    flex: 1
+    flex: 1,
+    borderWidth: 2,
+    borderColor: DEFAULTS.DIVIDER_COLOR
   },
   map: {
     ...StyleSheet.absoluteFillObject,

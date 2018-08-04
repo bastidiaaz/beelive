@@ -1,12 +1,13 @@
 import React from 'react';
 import {
+  Button,
   View,
   Text,
   ToastAndroid
 } from 'react-native';
 import t from 'tcomb-form-native';
-import Button from '../../components/Button/Button';
 import MapPointSelector from '../../components/MapPointSelector/MapPointSelector';
+import DEFAULTS from '../../utils/constants';
 import { updateApiary } from '../../reducers/apiariesReducer/apiariesActions';
 import { connect } from 'react-redux';
 import styles from './styles';
@@ -115,17 +116,21 @@ class ApiaryInfoScreen extends React.Component {
           editable: this.state.editable,
         }
       }
-    }
+    };
 
     const displayEdit =
-    <View style={{height: 40}}>
+    <View style={{height: 35}}>
       <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
-        <Button onPress={this.updateApiary} text="GUARDAR" />
-        <Button onPress={this.toggleEdit} text="CANCELAR" />
+        <Button color={DEFAULTS.PRIMARY_COLOR_DARK} title="           Guardar          " onPress={this.updateApiary}/>
+        <Button color={DEFAULTS.PRIMARY_COLOR_LIGHTEST} title="         Cancelar            " onPress={this.toggleEdit}/>
       </View>
     </View>;
 
-    const displayNoEdit = <Button onPress={this.toggleEdit} text="ACTUALIZAR APIARIO" />;
+    const displayNoEdit =
+    <View style={{height: 35}}>
+      <Button color={DEFAULTS.PRIMARY_COLOR_DARK} title="Editar Información" onPress={this.toggleEdit}/>
+    </View>
+
     const isEditable = this.state.editable;
 
     return(

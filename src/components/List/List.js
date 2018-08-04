@@ -2,6 +2,7 @@ import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import DEFAULTS from '../../utils/constants';
 import _ from 'lodash';
 import moment from 'moment';
 
@@ -30,8 +31,9 @@ class List extends React.Component {
 
     return (
       <ListItem
-        leftIcon={<View style={styles.iconContainer}><Icon style={styles.icon} name="forumbee"/></View>}
+        leftIcon={<View style={styles.iconContainer}>{this.props.icon}</View>}
         onPress={() => this.props.onPressItem(item)}
+        containerStyle={{ borderBottomColor: DEFAULTS.DIVIDER_COLOR, borderBottomWidth: 0.7}}
         title={title}
         subtitle={subtitle}
       />

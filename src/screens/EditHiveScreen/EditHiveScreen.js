@@ -1,14 +1,15 @@
 import React from 'react';
 import {
+  Button,
   ScrollView,
   Text,
   ToastAndroid,
   View
 } from 'react-native';
 import t from 'tcomb-form-native';
+import DEFAULTS from '../../utils/constants';
 import { updateHive } from '../../reducers/hivesReducer/hivesActions';
 import { connect } from 'react-redux';
-import Button from '../../components/Button/Button';
 import styles from './styles';
 
 const Form = t.form.Form;
@@ -16,31 +17,18 @@ const Hive = t.struct({
   name: t.String,
   description: t.maybe(t.String)
 });
-const formOptions = {
-  fields: {
-    name: {
-      label: 'Nombre *',
-      placeholder: 'Ingresa un nombre para tu colmena'
-    },
-    description: {
-      label: 'Descripción',
-      placeholder: 'Ingresa una descripción para tu colmena'
-    }
-  }
-}
 
 class EditHiveScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(this.props);
     this.state = {
+      editable: false,
       formValue: {
         name: this.props.hive.name,
         description: this.props.hive.description
       }
     };
-    console.log(this.props.navigation);
   };
 
   onFormChange = (formValue) => {
@@ -48,6 +36,22 @@ class EditHiveScreen extends React.Component {
       formValue: formValue
     });
   };
+
+  toggleEdit = () => {
+    var newValue = !this.state.editable;
+    this.setState({
+      editable: newValue
+    });
+
+    if (!newValue) {
+      this.setState({
+        formValue: {
+          name: this.props.hive.name,
+          description: this.props.hive.description
+        }
+      });
+    }
+  }
 
   updateHive = () => {
     var hiveForm = this.refs.hive;
@@ -67,7 +71,10 @@ class EditHiveScreen extends React.Component {
       };
 
       this.props.updateHive(hive, () => {
-        this.props.navigation.goBack();
+        //this.props.navigation.navigate('SingleApiary', {apiary: apiary.newValues}); navigate to the same view
+        this.setState({
+          editable: false
+        });
         ToastAndroid.show('Colmena Actualizada', ToastAndroid.SHORT);
       });
     } else {
@@ -77,14 +84,44 @@ class EditHiveScreen extends React.Component {
   }
 
   render() {
+    const formOptions = {
+      fields: {
+        name: {
+          label: 'Nombre *',
+          placeholder: 'Ingresa un nombre para tu apiario',
+          editable: this.state.editable,
+        },
+        description: {
+          label: 'Descripción',
+          placeholder: 'Ingresa una descripción para tu apiario',
+          editable: this.state.editable,
+        }
+      }
+    };
+
+    const displayEdit =
+    <View style={{height: 35}}>
+      <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
+        <Button color={DEFAULTS.PRIMARY_COLOR_DARK} title="           Guardar          " onPress={this.updateHive}/>
+        <Button color={DEFAULTS.PRIMARY_COLOR_LIGHTEST} title="         Cancelar            " onPress={this.toggleEdit}/>
+      </View>
+    </View>;
+
+    const displayNoEdit =
+    <View style={{height: 35}}>
+      <Button color={DEFAULTS.PRIMARY_COLOR_DARK} title="Editar Información" onPress={this.toggleEdit}/>
+    </View>
+
+    const isEditable = this.state.editable;
+
     return (
       <View style={styles.container}>
         <ScrollView style={styles.formContainer}>
           <View>
             <Form value={this.state.formValue} onChange={this.onFormChange} ref="hive" type={Hive} options={formOptions}/>
           </View>
-          <Button onPress={this.updateHive} text="ACTUALIZAR COLMENA" />
         </ScrollView>
+        {isEditable ? displayEdit : displayNoEdit}
       </View>
     )
   }

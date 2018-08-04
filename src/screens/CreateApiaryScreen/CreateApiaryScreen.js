@@ -1,13 +1,14 @@
 import React from 'react';
 import {
+  Button,
   Text,
   ToastAndroid,
   View
 } from 'react-native';
 import t from 'tcomb-form-native';
+import DEFAULTS from '../../utils/constants';
 import { createApiary } from '../../reducers/apiariesReducer/apiariesActions';
 import { connect } from 'react-redux';
-import Button from '../../components/Button/Button';
 import MapPointSelector from '../../components/MapPointSelector/MapPointSelector';
 import styles from './styles';
 
@@ -87,7 +88,9 @@ class CreateApiaryScreen extends React.Component {
         </View>
         <Text style={styles.label}>Ubicación</Text>
         <MapPointSelector initialRegion={this.state.region} onRegionChange={this.onRegionChange} />
-        <Button onPress={this.createApiary} text="CREAR APIARIO" />
+        <View style={{height: 35}}>
+          <Button color={DEFAULTS.PRIMARY_COLOR_DARK} title="Crear Apiario" onPress={this.createApiary}/>
+        </View>
       </View>
     )
   }

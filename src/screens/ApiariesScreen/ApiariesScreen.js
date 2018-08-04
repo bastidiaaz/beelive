@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { Image, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { getApiaries } from '../../reducers/apiariesReducer/apiariesActions';
 import styles from './styles';
 import List from '../../components/List/List';
+import apiary from  '../../../assets/images/apiary_icon.png';
 import FabButton from '../../components/FabButton/FabButton';
 
 class ApiariesScreen extends React.Component {
@@ -20,7 +21,7 @@ class ApiariesScreen extends React.Component {
     return(
       <View style={styles.container}>
         { this.props.apiaries.data.length > 0 ? (
-          <List data={this.props.apiaries.data} titleKey={{key: 'name'}} subtitleKey={{key: 'description'}} onPressItem={this._onPressItem}/>
+          <List icon={<Image style={styles.imageIcon} source={apiary} />} data={this.props.apiaries.data} titleKey={{key: 'name'}} subtitleKey={{key: 'description'}} onPressItem={this._onPressItem}/>
         ) : (
           <View style={styles.textMutedContainer}>
             <Text style={styles.textMuted}>Presione el botón "+" para crear su primer apiario</Text>

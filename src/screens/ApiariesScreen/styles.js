@@ -36,6 +36,11 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     padding: DEFAULTS.SCREEN_CONTAINER_PADDING
   },
+  imageIcon: {
+    marginTop: 4,
+    height: 30,
+    width: 30
+  }
 });
 
 export default styles;

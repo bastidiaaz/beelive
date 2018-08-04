@@ -7,7 +7,11 @@ var styles = StyleSheet.create({
     backgroundColor: '#FFF',
     padding: DEFAULTS.LIST_CONTAINER_PADDING,
     flex: 1
-  }
+  },
+  icon: {
+    fontSize: 22,
+    color: '#FFF'
+  },
 });
 
 export default styles;

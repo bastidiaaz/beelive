@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/Feather';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { getReports } from '../../reducers/reportsReducer/reportsActions';
@@ -18,7 +19,7 @@ class HiveReportsScreen extends React.Component {
   render() {
     return(
       <View style={styles.container}>
-        <List data={this.props.reports.data} titleKey={{key: 'dateTime', format: 'DD/MM/YYYY'}} subtitleKey={{key: 'dateTime', format: 'HH:mm'}} onPressItem={this._onPressItem}/>
+        <List icon={<Icon style={styles.icon} name={'file-text'} />} data={this.props.reports.data} titleKey={{key: 'dateTime', format: 'DD/MM/YYYY'}} subtitleKey={{key: 'dateTime', format: 'HH:mm'}} onPressItem={this._onPressItem}/>
       </View>
     )
   }
